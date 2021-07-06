@@ -1,0 +1,74 @@
+.services-page {
+  /* height: 60vh; */
+  width: 100%;
+}
+.services-page h1 {
+  margin-top: 6%;
+  font-size: var(--font-size-xxlarge);
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+
+  letter-spacing: 1.5px;
+}
+.cards-layout {
+  align-self: center;
+  display: block;
+}
+.arrow {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 40px;
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 100;
+  margin: 0 0.6em 0 0.6em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.arrow:disabled {
+  cursor: not-allowed;
+}
+
+.arrow-line {
+  margin: 0px;
+  width: 1.3em;
+  height: 0.18em;
+  background-color: var(--black);
+  transition: 0.1s ease-in-out;
+}
+.top-arrow-line {
+  transform: rotateZ(50deg);
+}
+.bottom-arrow-line {
+  transform: rotateZ(-50deg);
+}
+.left {
+  transform: rotateY(180deg) translate(0, -50%);
+}
+.arrow:active .top-arrow-line {
+  transform: rotateZ(35deg);
+}
+.arrow:active .bottom-arrow-line {
+  transform: rotateZ(-35deg);
+}
+.arrow:active .arrow-line {
+  margin: -5px;
+}
+@media screen and (max-width: 900px) {
+  .services-page h1 {
+    font-size: var(--font-size-xxlarge);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .services-page h1 {
+    letter-spacing: 0px;
+    font-size: var(--font-size-xlarge);
+  }
+}

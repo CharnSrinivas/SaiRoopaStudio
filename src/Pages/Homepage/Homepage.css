@@ -1,0 +1,107 @@
+.home-page {
+  /* background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-color: black; */
+  width: 100%;
+  height: 100vh;
+  user-select: none;
+  font-family: 'Overpass',sans-serif;
+}
+.home-bg-div{
+  position: absolute;
+  top:0;left:0;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.home-bg-img{
+  mix-blend-mode: multiply;
+  width: inherit;
+  height: inherit;
+  position: relative;
+  object-fit: cover;
+}
+.home-content {
+  width: 100%;
+  z-index: 2;
+  margin-top: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home-content .heading {
+  color: #fff;
+  width:95%;
+  text-align:center;
+  font-size: var(--font-size-xxxlarge);
+  align-self: center;
+}
+.type-text-div {
+  width: 100%;
+  display: flex;
+  margin-top: 2em;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.type-text-heading {
+  color: var(--primary);
+  font-size: var(--font-size-large);
+  letter-spacing: 1.5px;
+  font-weight: 500;
+}
+.type-text {
+  font-style: "Overpass", sans-serif;
+  font-size: var(--font-size-large);
+  font-weight: 400;
+  color: white;
+  width: 18em;
+  margin-left: 0.5em;
+}
+
+@media screen and (max-width: 1300px) {
+  .home-content .heading {
+    font-size: var(--font-size-xxlarge);
+  }
+  .type-text-heading,
+  .type-text {
+    font-size: var(--font-size-mid);
+  }
+}
+@media screen and (max-width: 900px) {
+  .home-content .heading {
+    font-size: var(--font-size-xxlarge);
+  }
+  .type-text-heading {
+    font-size: var(--font-size-mid);
+  }
+  .type-text {
+    font-size: var(--font-size-mid);
+    width: 15em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .home-content .heading {
+    text-align:center;
+    font-size: var(--font-size-xlarge); 
+    font-weight: bolder;
+  }
+  .type-text-div{
+    margin-left: 2em;
+  }
+  .type-text-heading {
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.1em;
+    font-weight: 700;
+  }
+  .type-text {
+    width: 11em;
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+  }
+}
+
