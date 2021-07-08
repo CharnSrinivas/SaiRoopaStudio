@@ -6,7 +6,7 @@ import '../../fonts/Overpass-Regular.ttf'
 import '../../fonts/Pacifico-Regular.ttf'
 import './Homepage.css'
 
-import { getBackgroundImageSrc, shuffelArray } from '../../utils/utils'
+import {  shuffelArray ,getImageSrc} from '../../utils/utils'
 import TypewriterComponent from 'typewriter-effect'
 
 function TypeWriter({ textArray, pauseTime, charDelay }) {
@@ -38,8 +38,8 @@ export default class Homepage extends Component {
         return (
             <div className='home-page'>
                 <div className='home-bg-div'>
-                    <LazyImage className='home-bg-img' src={getBackgroundImageSrc(this.backgroundImage,'jpg',true)}
-                        placeHolder={getBackgroundImageSrc(this.backgroundImage,'jpg',false)} />
+                    <LazyImage className='home-bg-img' src={getImageSrc('backgrounds','0','jpg')}
+                        placeHolder={getImageSrc('backgrounds','0','jpg','small')} />
                 </div>
                 <Navbar />
                 <div className='home-content'>

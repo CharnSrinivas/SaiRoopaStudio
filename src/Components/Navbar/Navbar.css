@@ -66,9 +66,7 @@ nav ul li a {
   text-decoration: none;
   font-weight: 600;
 }
-.active{
 
-}
 .nav-items li a:hover{ 
   color: var(--primary);
   text-decoration: underline;
@@ -96,7 +94,16 @@ nav ul li a {
   transition: 0.4s linear;
   background-color: rgb(25, 25, 25);
 }
-
+.overlay{
+  position: absolute;
+  width: 100%;
+  height: 200vh;
+  background-color: rgba(0,0,0,0.5);
+  overflow: hidden;
+  transition: 0.5s ease ;
+  opacity: 0;
+  /* display: none; */
+}
 #check {
   display: none;
 }
@@ -117,7 +124,10 @@ nav ul li a {
   /* transform: translateX(0%); */
   transform: translateY(0%);
 }
-
+#check:checked ~ .overlay{
+  opacity: 1;
+  
+}
 @media screen and (max-width: 1300px) {
   nav ul {
     width: 100%;
@@ -164,7 +174,7 @@ font-size:var(--font-size-xsm)
   nav ul {
     background-color: var(--black);
     height: 100vh;
-    width: 100%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

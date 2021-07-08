@@ -2,7 +2,13 @@ import React, { Component } from 'react'
 import './Navbar.css'
 
 export default class Navbar extends Component {
+    disableBodyScroll = (event)=>
+    {
+        const root = document.querySelector('body')
+        event.target.checked ? root.style.overflow='hidden' :root.style.overflow = 'auto'
+    }
     render() {
+
         return (
         
                 <nav>
@@ -13,7 +19,7 @@ export default class Navbar extends Component {
                             <div className='logo-dot'></div>
                         </div>
                     </div>
-                    <input type='checkbox' id='check'></input>
+                    <input type='checkbox' id='check' onChange={this.disableBodyScroll} ></input>
                     <ul className='nav-items'>
                         <li><a href='some'>Home</a></li>
                         <li><a href='#some'>Services</a></li>
@@ -28,7 +34,7 @@ export default class Navbar extends Component {
                         <div className='line2'></div>
                         <div className='line3'></div>
                     </label>
-
+                    <div className='overlay'></div>
                 </nav>
             
         )
