@@ -1,92 +1,87 @@
 import React, { createRef, useRef, useState, useEffect } from "react";
 import "./Tabview.css";
-export default function Tabview({
-    tabHeadNamesArray,
-    tabOnclickEventsArray,
-    sliderColor,
-    initialActiveTabIndex,
-    activeTabHeadTextColor,
-    inactiveTabHeadTextColor,
-}) {
-    useEffect(() => {
-        sliderRef.current.style.width =
-            ((100 / tabHeadNamesArray.length)/2).toString() + "%";
-        initialActiveTabIndex
-            ? changeTabPosition(initialActiveTabIndex)
-            : changeTabPosition(0);
-    }, []);
 
-    // ?--------------               Vlidating props
 
-    initialActiveTabIndex = initialActiveTabIndex ? initialActiveTabIndex : 0;
-    sliderColor = sliderColor ? sliderColor : "blue";
-    activeTabHeadTextColor = activeTabHeadTextColor ? activeTabHeadTextColor : "#000";
-    inactiveTabHeadTextColor = inactiveTabHeadTextColor
-        ? inactiveTabHeadTextColor
-        : "gray";
+export default class Tabview extends React.Component {
+    constructor(props) {
+        super(props)
+        this.tabHeadNamesArray = props.tabHeadNamesArray;
+        this.tabOnclickEventsArray = props.tabOnclickEventsArray;
+        this.sliderColor = props.sliderColor;
+        this.initialActiveTabIndex = props.initialActiveTabIndex;
+        this.activeTabHeadTextColor = props.activeTabHeadTextColor;
+        this.inactiveTabHeadTextColor = props.inactiveTabHeadTextColor;
+        this.sliderRef = createRef();
+        this.sliderWrapperRef = createRef();
+        this.tabBarItemsRef = [];
+        this.state = {
+            activeTab: this.initialActiveTabIndex,
+            tabsToRender: [this.initialActiveTabIndex]
+        }
+    }
+    componentDidMount() {
+        this.sliderRef.current.style.width = ((100 / this.tabHeadNamesArray.length) / 2).toString() + "%";
+        this.sliderRef.current.style.left = this.getLeftPercentageOfSlider(this.state.activeTab)
+    }
+    addRefToTabItemsRef = (ref) => {
+        this.tabBarItemsRef.push(ref)
 
-    const [activeTab, setActiveTab] = useState(initialActiveTabIndex);
-    const sliderRef = useRef();
-    const sliderWrapperRef = useRef();
-    const tabBarItemsRef = useRef([]);
+    }
+    getLeftPercentageOfSlider(indexOfTabItem) {
+        let sliderWrapperWidth = this.sliderWrapperRef.current.getBoundingClientRect().width;
+        let tabItemWidth = this.tabBarItemsRef[indexOfTabItem].getBoundingClientRect().width;
+        let sliderWidth = this.sliderRef.current.getBoundingClientRect().width;
+        let leftPercentage = (((indexOfTabItem * tabItemWidth + sliderWidth / 2) / sliderWrapperWidth) * 100).toString() + "%";
+        return leftPercentage
+        
+    }
+    changeTabPosition(index) {
+        if (index !== this.state.activeTab) {
+            let leftPercentage =this.getLeftPercentageOfSlider(index);
+            this.sliderRef.current.style.left = leftPercentage;
+            this.setState({ activeTab: index })
+        }
 
-    //Todo:  Fill tabbaritemsref array with creactRef
-    if (tabBarItemsRef.current.length !== tabHeadNamesArray.length) {
-        tabBarItemsRef.current = tabHeadNamesArray.map(
-            (_, i) => tabBarItemsRef.current[i] || createRef()
+    };
+    render() {
+        return (
+            <div className="tab-container">
+                <div className="tab-bar">
+                    <div className="tab-bar-items">
+                        {this.tabHeadNamesArray.map((tabName, index) => {
+                            let id = "tab-bar-item-" + index;
+                            return (
+                                <div
+                                    key={index}
+                                    className={index === this.state.activeTab ? "tab-bar-item active-tab" : "tab-bar-item"}
+                                    data-index={index}
+                                    style={{ "--active-tab-color": this.activeTabHeadTextColor, "--inactive-tab-color": this.inactiveTabHeadTextColor, }}
+                                    id={id}
+                                    ref={this.addRefToTabItemsRef}
+                                    onClick={
+                                        () => {
+                                            this.changeTabPosition(index)
+                                        }
+                                    }
+                                >
+                                    {tabName}
+                                </div>
+                            );
+                        })}
+                    </div>
+                    <div className="tab-slider-wrapper" ref={this.sliderWrapperRef}>
+                        <div
+                            id="slider"
+                            style={{
+                                backgroundColor: this.sliderColor,
+                            }}
+                            ref={this.sliderRef}
+                        ></div>
+                    </div>
+                </div>
+            </div>
         );
     }
 
-    const changeTabPosition = (index) => {
-        if (index !== activeTab) {
-            let sliderWrapperWidth =sliderWrapperRef.current.getBoundingClientRect().width;
-            let tabItemWidth = tabBarItemsRef.current[index].current.getBoundingClientRect().width;
-            let sliderWidth = sliderRef.current.getBoundingClientRect().width;
-            let leftPercentage =
-                (((index * tabItemWidth+sliderWidth/2) / sliderWrapperWidth) * 100).toString() + "%";
-            sliderRef.current.style.left = leftPercentage;
-            setActiveTab(index);
-        }
-    };
 
-    return (
-        <div className="tab-container">
-            <div className="tab-bar">
-                <div className="tab-bar-items">
-                    {tabHeadNamesArray.map((tabName, index) => {
-                        let id = "tab-bar-item-" + index;
-                        return (
-                            <div
-                                key={index}
-                                className={
-                                    index === activeTab
-                                        ? "tab-bar-item active-tab"
-                                        : "tab-bar-item"
-                                }
-                                data-index={index}
-                                style={{
-                                    "--active-tab-color": activeTabHeadTextColor,
-                                    "--inactive-tab-color": inactiveTabHeadTextColor,
-                                }}
-                                id={id}
-                                ref={tabBarItemsRef.current[index]}
-                                onClick={() => changeTabPosition(index)}
-                            >
-                                {tabName}
-                            </div>
-                        );
-                    })}
-                </div>
-                <div className="tab-slider-wrapper" ref={sliderWrapperRef}>
-                    <div
-                        id="slider"
-                        style={{
-                            backgroundColor: sliderColor,
-                        }}
-                        ref={sliderRef}
-                    ></div>
-                </div>
-            </div>
-        </div>
-    );
 }
