@@ -29,7 +29,7 @@ export default class Homepage extends Component {
         super(props)
 
         this.backgroundImage = this.props.backgroundImageName
-        this.typeText = ['Wedding Photography', 'Event Photography', 'Photo Editing']
+        this.typeText = ['Wedding Photography', 'Candid Photography','Event Photography', 'Photo Editing']
         shuffelArray(this.typeText)
 
     }

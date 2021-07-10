@@ -12,8 +12,8 @@ export function shuffelArray(arr) {
 export function getImageSrc(fromFolder, imageName, extension, type) {
     
     if (!type) {
-        
         return require(`../../src/assets/images/${fromFolder}/${imageName}.${extension}`).default;
+    
     }
     return require(`../../src/assets/images/${fromFolder}/${imageName}_${type}.${extension}`).default
 

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
-const LazyImage = ({ className, src, placeHolder, alt }) => {
+const LazyImage = ({ className, src, placeHolder, alt, width, height, onClick }) => {
+
     const [currentImg, setCurrentImg] = useState(placeHolder);
+    if (!currentImg) setCurrentImg(src)
+
     React.useEffect(() => {
         setOriginalImage()
-
     });
 
     const setOriginalImage = () => {
@@ -15,12 +17,18 @@ const LazyImage = ({ className, src, placeHolder, alt }) => {
 
 
     return (
-        <img className={className} src={currentImg} alt={alt} loading='lazy'></img>
+        <img
+            className={className ? className : null}
+            src={currentImg} alt={alt}
+            loading='lazy'
+            onClick={onClick}
+            width={width ? width : 'auto'}
+            height={height ? height : 'auto'}></img>
     )
 
 }
 
- export default LazyImage;
+export default LazyImage;
 
  // ? Clas Component functionaly as above function
 /*export default class LazyImage extends React.Component {

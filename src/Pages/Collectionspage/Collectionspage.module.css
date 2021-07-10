@@ -1,35 +1,48 @@
-.collections-page{
-    margin-bottom: 50vh;
-    width:100%;
+.collections-page {
+  margin:2em auto  50vh auto;
+  width: 100%;
 }
-.collections-heading{
-    font-family: 'Overpass',sans-serif;
-    font-size: var(--font-size-xlarge);
-    font-weight: bold;
-    text-align: center;
-    
+.collections-heading {
+  font-family: "Overpass", sans-serif;
+  font-size: var(--font-size-xlarge);
+  font-weight: bold;
+  text-align: center;
 }
-.tab-view{
-    margin:3em auto;
+.tab-view {
+  margin: 3em auto;
 }
-.tab-content{
-    width: 100%;
-    height: auto;
-    display: grid;
-    grid-gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 150px;
-    grid-auto-flow: row dense;
+
+.tab-view-item {
+  margin: 3rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  grid-gap: 5px;
+}
+.tab-view-item-image-wrapper {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  height: fit-content;
+  margin: 8px;
+  background-color: rgba(97, 40, 40, 0.15);
+  transition: all 0.4s ease;
+}
+.tab-view-item-image-wrapper:hover {
+  background-color: transparent;
+  transform: scale(1.03);
+  
+}
+.tab-view-item-image {
+  min-width: 100%;
+  width: 100%;  
+  mix-blend-mode: multiply;
+  position: relative;
+  border-radius: inherit;
+  cursor:zoom-in;
 }
 
 
-.tab-content-div{
-    background-color: green;
-    width: 200px;
-    height: 100%;
-    border: 2px solid black;
-}
-.tab-content-image{
-    width: 200px;
-    border:2px solid black;
+
+@media screen and (max-width:900px) {
+  /* .tab-view-item-image-wrapper{background-color: transparent;} */
+  
 }

@@ -1,0 +1,42 @@
+.model-bg {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 50;
+}
+
+.model {
+  position: absolute;
+  height: auto;
+  width: 60%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: inherit;
+}
+
+.cancel-btn {
+  position: absolute;
+  right: 3em;
+  top: 1em;
+  width: 2.5em;
+  height: 2.5em;
+  background: url("../../../assets/svgs/icons/cancel.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  z-index: inherit;
+}
+
+
+.model img {
+  z-index: 55;
+  width: 100%;
+}

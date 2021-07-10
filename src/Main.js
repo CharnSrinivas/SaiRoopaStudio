@@ -4,7 +4,7 @@ const Aboutpage = React.lazy(()=> import('./Pages/Aboutpage/Aboutpage'));
 const Homepage = React.lazy(() => import('./Pages/Homepage/Homepage'));
 const Collectionspage = React.lazy(()=> import ('./Pages/Collectionspage/Collectionspage'))
 const Servicespage = React.lazy(() => import('./Pages/Servicespage/Servicespage'));
-export default class Main extends Component {
+export default class Main extends React.PureComponent {
     render() {
         return (
             <>
