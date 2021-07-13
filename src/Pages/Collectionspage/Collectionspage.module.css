@@ -1,5 +1,5 @@
 .collections-page {
-  margin:2em auto  50vh auto;
+  margin:2em auto  3em auto;
   width: 100%;
 }
 .collections-heading {
@@ -22,6 +22,7 @@
   border: 2px solid #ccc;
   border-radius: 10px;
   height: fit-content;
+  
   margin: 8px;
   background-color: rgba(97, 40, 40, 0.15);
   transition: all 0.4s ease;

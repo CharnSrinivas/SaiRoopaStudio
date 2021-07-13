@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const LazyImage = ({ className, src, placeHolder, alt, width, height, onClick }) => {
+const LazyImage = ({ className, src, placeHolder, alt,  onClick }) => {
 
     const [currentImg, setCurrentImg] = useState(placeHolder);
     if (!currentImg) setCurrentImg(src)
@@ -22,8 +22,8 @@ const LazyImage = ({ className, src, placeHolder, alt, width, height, onClick })
             src={currentImg} alt={alt}
             loading='lazy'
             onClick={onClick}
-            width={width ? width : 'auto'}
-            height={height ? height : 'auto'}></img>
+            
+            ></img>
     )
 
 }

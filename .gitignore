@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+
 /src/assets/images/backgrounds/*.jpg
 /src/assets/images/wedding/*.jpg
 

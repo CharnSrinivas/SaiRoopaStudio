@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import LazyImage from '../../Components/LazyImage'
 
-import '../../fonts/Overpass-Regular.ttf'
-import '../../fonts/Pacifico-Regular.ttf'
 import './Homepage.css'
-
-import {  shuffelArray ,getImageSrc} from '../../utils/utils'
 import TypewriterComponent from 'typewriter-effect'
+
+const utils = require('../../utils/utils')
+
 
 function TypeWriter({ textArray, pauseTime, charDelay }) {
     return (
@@ -30,7 +29,7 @@ export default class Homepage extends Component {
 
         this.backgroundImage = this.props.backgroundImageName
         this.typeText = ['Wedding Photography', 'Candid Photography','Event Photography', 'Photo Editing']
-        shuffelArray(this.typeText)
+        utils.shuffelArray(this.typeText)
 
     }
 
@@ -38,10 +37,10 @@ export default class Homepage extends Component {
         return (
             <div className='home-page'>
                 <div className='home-bg-div'>
-                    <LazyImage className='home-bg-img' src={getImageSrc('backgrounds','0','jpg')}
-                        placeHolder={getImageSrc('backgrounds','0','jpg','small')} />
+                    <LazyImage className='home-bg-img' src={utils.getImageSrc('backgrounds','0','jpg')}
+                        placeHolder={utils.getImageSrc('backgrounds','0','jpg','small')} />
                 </div>
-                <Navbar />
+                <Navbar key={0}/>
                 <div className='home-content'>
                     <div className='heading' >Welcome to Sai Roopa Studios.</div>
                     <div className='type-text-div'>

@@ -1,8 +1,16 @@
 :root {
+
+  --primary-hue: 27;
+  --primary-saturation:87%;
+  --primary-lightness:50%;
+  
+
+  --background-color:hsl(25, 100%, 95%);
+
   --primary: #ef7512;
   --secondary: #a34d07;
   --black: #1d353f;
-  --light-green: #19a890;
+  --light-green: #15B5A2;
   --green: #1f766c;
   --red: #cd3f1c;
   --nav-bg-color: #fff;
@@ -32,7 +40,7 @@ body {
   background-color: #fff;
   overflow-x: hidden !important;
   max-width: 100% !important;
-  
+  background-color:var(--background-color);
   user-select: none;
 }
 

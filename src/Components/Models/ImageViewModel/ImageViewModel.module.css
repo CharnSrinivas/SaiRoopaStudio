@@ -37,6 +37,15 @@
 
 
 .model img {
-  z-index: 55;
+
   width: 100%;
+  border-radius: 12px;
+}
+
+@media screen and (max-width:900px)
+{
+  .model{
+    
+    width: 90%;
+  }
 }

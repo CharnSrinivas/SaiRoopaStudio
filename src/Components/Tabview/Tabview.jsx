@@ -51,7 +51,6 @@ export default class Tabview extends React.Component {
             this.sliderRef.current.style.left = leftPercentage.toString() + "%";;
             this.setState({ activeTab: index })
         }
-
     };
     TabBarSlider = () => {
         return (
@@ -94,27 +93,27 @@ export default class Tabview extends React.Component {
                             );
                         })}
                     </div>
-                    <this.TabBarSlider />
+                    {this.TabBarSlider()}
                 </div>
             </div>
         )
     }
     TabContent = () => {
-        return (
+        return(
             <div className='tab-content-wrapper'>
                 {
                     this.state.tabsToRender.includes(this.state.activeTab) &&
-
                     this.renderTabContentArray[this.state.activeTab]
                 }
             </div>
         )
     }
     render() {
+       
         return (
             <div className="tab-container">
-                <this.TabBar />
-                <this.TabContent />
+               {this.TabBar()}
+                {this.TabContent()}
             </div>
         );
     }

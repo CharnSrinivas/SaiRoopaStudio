@@ -3,7 +3,8 @@ import './Servicespage.css'
 
 import Carousel, { consts } from 'react-elastic-carousel';
 import Servicecard from '../../Components/Servicecard/Servicecard'
-import { shuffelArray } from '../../utils/utils';
+
+const utils = require('../../utils/utils')
 const RightArrow = ({ onClick, disable }) => {
   
   return (
@@ -73,7 +74,7 @@ export default class Servicespage extends Component {
 
       },
     ]
-    shuffelArray(this.services)
+    utils.shuffelArray(this.services)
   }
   getServiceCards = () => {
     return this.services.map((service, index) => {
@@ -105,7 +106,6 @@ export default class Servicespage extends Component {
           breakPoints={this.breakPoints}
           itemPadding={[10, 10]}
           disableArrowsOnEnd={true}
-
           pagination={false}
 
         >

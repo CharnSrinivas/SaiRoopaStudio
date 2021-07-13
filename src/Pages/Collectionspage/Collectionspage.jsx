@@ -1,20 +1,46 @@
 import React, { Component, useState } from 'react'
 
 import Tabview from '../../Components/Tabview/Tabview'
-import { primary, black } from '../../Constants/colors'
-import { getImageSrc } from '../../utils/utils';
+
 import LazyImage from '../../Components/LazyImage'
 import ImageViewModel from '../../Components/Models/ImageViewModel/ImageViewModel';
 import styles from './Collectionspage.module.css'
 
-const TabContentPhoto = ({ originalImageSrc,mediumImagesSrc ,placeHolderImageSrc ,index}) => {
 
-    const [openModel, setOpenModel] = useState(false)
+const colors = require('../../Constants/colors')
+const utils = require('../../utils/utils')
 
-    const toggleModel = () => {setOpenModel(true)    }
+export const TabContentPhoto = ({ originalImageSrc, mediumImagesSrc, placeHolderImageSrc, index,
+    data_aos,
+    data_aos_duration,
+    data_aos_delay,
+    data_aos_once,
+    showAos }) => {
+
+    const [canShowModel, setcanShowModel] = useState(false)
+
+    const toggleModel = () => {
+        const root = document.querySelector('body')
+        if (canShowModel) {
+            setcanShowModel(false)
+            root.style.overflow = 'auto'
+        } else {
+            setcanShowModel(true)
+            root.style.overflow = 'hidden'
+        }
+    }
+    // const [aosAttr ,setAosAttr] = useState()
+    const aosAttr = {
+        'data-aos':showAos ? data_aos : '',
+        'data-aos-duration':showAos ? data_aos_duration : '',
+        'data-aos-delay':showAos ? data_aos_delay : '',
+        'data-aos-once':showAos ? data_aos_once : '',
+    }
     return (
         <>
-            <div className={styles['tab-view-item-image-wrapper']}>
+            <div className={styles['tab-view-item-image-wrapper']}
+                {...aosAttr}
+            >
 
                 <LazyImage placeHolder={placeHolderImageSrc}
                     src={mediumImagesSrc}
@@ -23,14 +49,16 @@ const TabContentPhoto = ({ originalImageSrc,mediumImagesSrc ,placeHolderImageSrc
                     key={index}
                     onClick={toggleModel}
                 />
+
             </div>
-            {openModel && <ImageViewModel placeholder={placeHolderImageSrc} src={originalImageSrc} onCancel={()=>setOpenModel(false)}/>}
+            
+            {canShowModel && <ImageViewModel placeholder={mediumImagesSrc} src={originalImageSrc} onCancel={toggleModel} />}
         </>
     )
 }
 
 
-class TabContentPhotos extends Component {
+export class TabContentPhotos extends Component {
     constructor(props) {
         super(props)
         this.className = props.className;
@@ -39,35 +67,47 @@ class TabContentPhotos extends Component {
         this.noOfImages = props.noOfImages;
         this.placeHolderImagesSrc = [];
         this.mediumImagesSrc = [];
-        this.originalImagesSrc=[]
+        this.originalImagesSrc = []
+        this.maxAosShowWidth = 801;
+
         this.state = {
-            openModel: false
+            openModel: false,
+            canShowAos: window.innerWidth < this.maxAosShowWidth
         }
 
         for (let i = 0; i < this.noOfImages; i++) {
             let name = i.toString();
-            this.placeHolderImagesSrc.push(getImageSrc(this.imageFolderName, name, 'jpg', 'small'));
-            this.mediumImagesSrc.push(getImageSrc(this.imageFolderName, name, 'jpg', 'medium'));
-            this.originalImagesSrc.push(getImageSrc(this.imageFolderName,name,'jpg'))
+            this.placeHolderImagesSrc.push(utils.getImageSrc(this.imageFolderName, name, 'jpg', 'small'));
+            this.mediumImagesSrc.push(utils.getImageSrc(this.imageFolderName, name, 'jpg', 'medium'));
+            this.originalImagesSrc.push(utils.getImageSrc(this.imageFolderName, name, 'jpg'))
         }
 
     }
-
-
+    componentDidMount() {
+        window.addEventListener('resize', () => {
+            this.setState({ canShowAos: window.innerWidth < this.maxAosShowWidth })
+        })
+    }
     render() {
         return (
-            <div className={this.className} id={this.id} >
+            <div className={this.className} id={this.id}
+
+            >
                 {
                     this.mediumImagesSrc.map((mediumImagesSrc, index) => {
                         return (
+
                             <TabContentPhoto
+                                data_aos={index % 2 === 0 ? 'fade-up-right' : 'fade-up-left'}
+                                data_aos_once='false'
+                                showAos={this.state.canShowAos}
                                 key={index}
                                 originalImageSrc={this.originalImagesSrc[index]}
                                 mediumImagesSrc={mediumImagesSrc}
                                 placeHolderImageSrc={this.placeHolderImagesSrc[index]}
 
                                 index={index}
-                                 />
+                            />
                         )
                     })
                 }
@@ -100,9 +140,9 @@ export default class Collections extends Component {
                 <div className={styles['tab-view']}>
                     <Tabview
                         tabHeadNamesArray={['Wedding', 'Candid', 'Editing', 'Event', 'Fashion']}
-                        activeTabHeadTextColor={primary}
-                        inactiveTabHeadTextColo={black}
-                        sliderColor={primary}
+                        activeTabHeadTextColor={colors.primary}
+                        inactiveTabHeadTextColo={colors.black}
+                        sliderColor={colors.primary}
                         initialActiveTabIndex={0}
                         overFlowTabBar={true}
                         tabBarWidth={'100%'}
@@ -115,6 +155,8 @@ export default class Collections extends Component {
                             this.renderPhotos(styles['tab-view-item'], 'fashion-images', 'wedding', 5)
 
                         ]}
+                        key={2}
+
 
                     />
                 </div>
