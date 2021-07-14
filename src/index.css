@@ -3,13 +3,13 @@
   --primary-hue: 27;
   --primary-saturation:87%;
   --primary-lightness:50%;
-  
+  --black-hue:198;
 
   --background-color:hsl(25, 100%, 95%);
 
   --primary: #ef7512;
   --secondary: #a34d07;
-  --black: #1d353f;
+  --black: hsl(198, 37%, 18%);
   --light-green: #15B5A2;
   --green: #1f766c;
   --red: #cd3f1c;

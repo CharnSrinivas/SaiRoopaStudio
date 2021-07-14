@@ -7,6 +7,7 @@ export function shuffelArray(arr) {
         arr[randIndex] = temp
     }
 
+    
 }
 
 export function getImageSrc(fromFolder, imageName, extension, type) {

@@ -3,7 +3,6 @@ import Spinner from './Components/Loading/Pagespinner';
 
 import Aos from 'aos';
 import 'aos/dist/aos.css'
-
 const Aboutpage = React.lazy(() => import('./Pages/Aboutpage/Aboutpage'));
 const Homepage = React.lazy(() => import('./Pages/Homepage/Homepage'));
 const Collectionspage = React.lazy(() => import('./Pages/Collectionspage/Collectionspage'))
@@ -11,6 +10,12 @@ const Servicespage = React.lazy(() => import('./Pages/Servicespage/Servicespage'
 const Contactpage = React.lazy((() => import('./Pages/Contactpage/Contactpage')));
 
 var onWindowChangeTriggerEvents = []
+
+
+//  API_KEY = FFDE63E8B5AB9952E899F45A8377A826559E64EABC1A62AE796808E243F0D9C470F18ADC611B11953D019EED0E281454
+
+
+
 
 export const addTriggerEventToOnWindowChange = (triggerEvent) => {
     if (triggerEvent) onWindowChangeTriggerEvents.push(triggerEvent)
@@ -40,12 +45,16 @@ export default class Main extends React.Component {
             delay: 200,
         })
 
+        
+    }
+    componentDidMount(){
+
     }
     render() {
         return (
             <>
                 <Suspense fallback={<Spinner />} >
-                    <Homepage backgroundImageName={'0'} />
+                    <Homepage backgroundImageName={'1'} />
                     <Servicespage />
                     <Aboutpage />
                     <Collectionspage />
