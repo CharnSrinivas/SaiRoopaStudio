@@ -96,7 +96,7 @@ export default class Servicespage extends Component {
   render() {
     return (
 
-      <div className='services-page'>
+      <div className='services-page' >
         <h1>
           What do we offer
         </h1>

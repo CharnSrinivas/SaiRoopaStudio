@@ -5,7 +5,7 @@ import Tabview from '../../Components/Tabview/Tabview'
 import LazyImage from '../../Components/LazyImage'
 import ImageViewModel from '../../Components/Models/ImageViewModel/ImageViewModel';
 import styles from './Collectionspage.module.css'
-
+import { addTriggerEventToOnWindowChange } from '../../Main';
 
 const colors = require('../../Constants/colors')
 const utils = require('../../utils/utils')
@@ -84,7 +84,7 @@ export class TabContentPhotos extends Component {
 
     }
     componentDidMount() {
-        window.addEventListener('resize', () => {
+       addTriggerEventToOnWindowChange(() => {
             this.setState({ canShowAos: window.innerWidth < this.maxAosShowWidth })
         })
     }

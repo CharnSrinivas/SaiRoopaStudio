@@ -10,7 +10,7 @@ export default function Aboutpage() {
          'data-aos-once': 'true'
     }
     return (
-        <div className='about-page'>
+        <div className='about-page' id='2'>
             <div className='line top'></div>
             <div className='about-heading'>About me</div>
             <div className='about-content'>

@@ -28,14 +28,31 @@
   top: 1em;
   width: 2.5em;
   height: 2.5em;
-  background: url("../../../assets/svgs/icons/cancel.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;align-items: center;
   cursor: pointer;
   z-index: inherit;
+
 }
+.cancel-btn .line{
+  background-color: var(--black);
+  position: absolute;
+  height: 90%;
+  border-radius: 3px;
+  width: 4px;
+}
+.line1{
+  left: 50%;
+  
+  transform: rotate(40deg) translateX(-50%);
+}
+.line2{
+  right: 50%;
+  transform: rotate(-40deg) translateX(50%);
 
-
+}
 .model img {
 
   width: 100%;

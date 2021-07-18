@@ -1,16 +1,22 @@
-from flask import Flask
-import smtplib
+from flask import Flask, app;
+from SRStudios.EmailApi import emailApi;
+from flask_cors import CORS
 
 
+def create_app():
+    app = Flask(__name__);
 
-  
-app = Flask(__name__)
-  
-@app.route("/")
-def index():
-        return "<h1>Welcome to Flask , Hosing form Heroku</h1>"
+    #*#####################  (CORS) => Cross Origin Resources Shraing      ############################
+                        #? It need to be enable to allow other web app to access api
+    CORS(app);
+    #*################################################################################################
 
-@app.route('/Home')
-@app.route('/home')
-def home():
-    return "<h1> this is Home Page 😃 😁 😁 😁 <h1>"
+    app.config['SECRET_KEY'] = '##95##71##38#256##';
+    app.config['CORS_HEADERS'] = 'Content-Type';
+
+    app.register_blueprint(emailApi,url_prefix='/srstudio/mail/');
+
+    
+
+    return app;
+

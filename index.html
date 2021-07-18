@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        justify-content: space-evenly;
+    }
+</style>
+
+<input type="file" accept="image/*" id='input'></input>
+<img>
+<script>
+
+    var reader = new FileReader()
+    fetch('https://pbs.twimg.com/profile_images/1580483969/parisjs_transparent.png')
+        .then(response => response.blob()).then(blob_img => {
+            reader.onload = () => {
+                // img.src = reader.result;
+                // console.log(reader.result)
+                let ext =((reader.result).split(';')[0]).split('/')[1]
+
+                var data = {
+                    'email':'charanbalaji08@gmail.com',
+                    'appPwd':'azqfullywgbupvrr',
+                    'name':'charan',
+                    'subject':'The super subject',
+                    'message':'this is a great message',
+                    'base64_img':reader.result.split(',')[1],
+                    'img_type' :ext,
+                    'img_name':'imgname'
+                }
+                
+                getData(data)
+                
+            }
+            reader.readAsDataURL(blob_img)
+        })
+
+     function getData(data) {
+        fetch('http://charansrinivas-apis.herokuapp.com/srstudio/mail/send',
+            {
+                method: "POST",
+                body: JSON.stringify(data),
+            })
+        
+
+    }
+</script>
+</body>
+
+</html>

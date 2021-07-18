@@ -20,3 +20,11 @@ export function getImageSrc(fromFolder, imageName, extension, type) {
 
 
 }
+
+export  function sendMail(body,method,url)
+{
+     fetch(url,{
+        method:method,
+        body:body
+    }).then((res)=>{return res}) ;
+}

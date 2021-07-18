@@ -1,9 +1,23 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 .contact-page {
   width: 100%;
-  height:auto;
+  height: auto;
   margin: 10em auto auto auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   position: relative;
 }
@@ -12,17 +26,31 @@
   background-position: center;
   margin-bottom: 5em;
   width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
 }
 .left-block {
   width: 50%;
-position: relative;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .left-block-text {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
 }
 
@@ -41,10 +69,14 @@ position: relative;
 }
 .contacts {
   margin-top: 50px;
-  
 }
 .contacts-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
   margin: 1em auto 1em 0;
 }
@@ -61,17 +93,24 @@ position: relative;
   position: absolute;
   z-index: -3;
   left: -130px;
-  bottom:0;
-  opacity:90%;
-  width: 120%
+  bottom: 0;
+  opacity: 90%;
+  width: 120%;
 }
 
 /*?   Contact  card styling  */
 
 .right-block {
   width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -79,18 +118,23 @@ position: relative;
   /* width: 50%; */
   height: auto;
   background-color: white;
+  -webkit-box-shadow: 8px 4px 25px rgba(0, 0, 0, 0.2);
   box-shadow: 8px 4px 25px rgba(0, 0, 0, 0.2);
   border-radius: 15px;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
-  
 }
-.card-heading{
-  margin:1.5em auto auto auto;
-  color: hsl(var(--primary-hue),40%,20%);
+.card-heading {
+  margin: 1.5em auto auto auto;
+  color: hsl(var(--primary-hue), 40%, 20%);
   font-size: var(--font-size-large);
-  font-family: 'overpass';
+  font-family: "overpass";
   font-weight: bold;
 }
 .rocket-img {
@@ -98,14 +142,24 @@ position: relative;
   left: 50%;
   top: -5%;
   width: 35%;
+  -webkit-animation: floating 3s ease-in-out infinite;
   animation: floating 3s ease-in-out infinite;
 }
 form {
   padding-left: 1em;
   padding-right: 2em;
 
+  display: -webkit-box;
+
+  display: -ms-flexbox;
+
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: flex-start;
 }
 .card-section p {
@@ -113,18 +167,33 @@ form {
 }
 .name-section,
 .mail-section,
-.message-section {
+.message-section,
+.phone-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
-  justify-content: space-around;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: flex-start;
   margin-top: 5px;
 }
 .name-section div,
-.mail-section div {
+.mail-section div,
+.phone-section div {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   /* padding-top: 0.2em; */
   /* padding-bottom: 0.2em; */
@@ -136,7 +205,8 @@ form {
   position: relative;
 }
 .name-section div input,
-.mail-section div input {
+.mail-section div input,
+.phone-section div input {
   width: 100%;
   margin-left: 1em;
   margin-bottom: 0.1em;
@@ -144,28 +214,32 @@ form {
   border: none;
   background-color: transparent;
   outline: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
   width: 100%;
   padding: 10px;
 }
 
 .name-section div svg,
-.mail-section div svg {
+.mail-section div svg,
+.phone-section div svg {
   width: 1.2em;
 }
 .name-section div svg path,
-.mail-section div svg path {
+.mail-section div svg path,
+.phone-section div svg path {
   width: 1.2em;
 }
 .message-section {
-  /* background-color: red; */
-  /* display: flex; */
-  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
 }
 .message-section textarea {
   resize: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
   border: none;
   outline: none;
@@ -181,16 +255,17 @@ form {
 
 .upload-section {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
-  align-items: center;
-  width: fit-content;
-  /* margin: 0.7em auto 0.7em auto; */
   margin-top: 0.7em;
   margin-bottom: 0.7em;
 }
 .upload-section img {
-  
   width: 1.2em;
   cursor: pointer;
 }
@@ -202,59 +277,106 @@ form {
 .submit-btn {
   background-color: var(--primary);
   color: hsl(0, 0%, 90%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-weight: 500;
   letter-spacing: 0.05em;
-  height: 80px;
+  height: 1.7em;
   width: 75%;
-  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 12px;
   margin: 1em auto 1em auto;
   font-size: var(--font-size-large);
   cursor: pointer;
+}
+.submit-btn .submit-btn-spinner {
+  color: hsl(0, 0%, 90%);
+  border-radius: 50%;
+  margin-left: 0.4em;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  width: 0.7em;
+  height: 0.7em;
+  border-width: 0.15em;
+  display: none;
+  -webkit-animation: spinner 0.5s ease-in infinite;
+  animation: spinner 0.5s ease-in infinite;
 }
 .card-section {
   position: relative;
 }
 
-.mail-underline ,.name-underline ,.mail-underline-focus ,.name-underline-focus  {
+.mail-underline,
+.name-underline,
+.phone-underline,
+.mail-underline-focus,
+.name-underline-focus,
+.phone-underline-focus {
   position: absolute;
   background-color: #868686;
   width: 84%;
-  left:14%;
-  height:1px;
+  left: 14%;
+  height: 1px;
   bottom: 10px;
+  -webkit-transition: all 0.6s ease;
+  -o-transition: all 0.6s ease;
   transition: all 0.6s ease;
 }
-.name-underline-focus, .mail-underline-focus {
-  background-color: hsl(var(--primary-hue),100%,50%);
+.name-underline-focus,
+.mail-underline-focus,
+.phone-underline-focus {
+  background-color: hsl(var(--primary-hue), 100%, 50%);
   height: 2px;
-  transform: scale(0);      
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
 }
 .name-section div input:focus ~ .name-underline-focus,
-.mail-section div input:focus ~ .mail-underline-focus 
-{
+.mail-section div input:focus ~ .mail-underline-focus,
+.phone-section div input:focus ~ .phone-underline-focus {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
   transform: scale(1);
 }
-.card-section svg{
+.card-section svg {
+  -webkit-transition: all 0.8s ease;
+  -o-transition: all 0.8s ease;
   transition: all 0.8s ease;
 }
-.name-section div input:focus + svg path, .mail-section div input:focus + svg path
-{
+.name-section div input:focus + svg path,
+.mail-section div input:focus + svg path,
+.phone-section div input:focus + svg path {
   fill: var(--primary);
+  
 }
-.card-section div textarea:focus{
+.card-section div textarea:focus {
+  -webkit-transition: all 01s ease;
+  -o-transition: all 01s ease;
   transition: all 01s ease;
   border-color: var(--primary);
 }
 
 @media screen and (max-width: 1300px) {
   .contact-page-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     width: 100%;
   }
-  .left-block{
+  .left-block {
     display: block;
     width: 100%;
   }
@@ -264,26 +386,25 @@ form {
     text-align: center;
     font-size: calc(var(--font-size-xlarge) + 2px);
   }
-  .left-block-text p{
+  .left-block-text p {
     width: 70%;
     margin: 1em auto;
     text-align: center;
   }
-  .contacts{
+  .contacts {
     margin: auto;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
-    
   }
-  .contact-card{margin-bottom: 0;}
-  .submit-btn{
-    width: 80%;
-    height: 60px;
-    border-radius: 20px;
+  .contact-card {
+    margin-bottom: 0;
   }
-  .contacts div p{
+
+  .contacts div p {
     font-size: calc(var(--font-size-sm) - 2px);
   }
-  .contacts div img{
+  .contacts div img {
     width: 28px;
   }
   .left-block,
@@ -291,18 +412,65 @@ form {
     width: 100%;
   }
   .right-block {
-    margin:50px auto 100px auto;
+    margin: 50px auto 100px auto;
   }
-  .left-block-svg{display: none;}
+  .left-block-svg {
+    display: none;
+  }
+}
+
+@-webkit-keyframes floating {
+  100%,
+  0% {
+    -webkit-transform: translate(-10px, -8px) scale(1.023, 1.03);
+    transform: translate(-10px, -8px) scale(1.023, 1.03);
+  }
+
+  50% {
+    -webkit-transform: translate(10px, 8px) scale(1, 1);
+    transform: translate(10px, 8px) scale(1, 1);
+  }
 }
 
 @keyframes floating {
   100%,
   0% {
-    transform: translate(-10px,-8px) scale(1.023,1.03) ;
+    -webkit-transform: translate(-10px, -8px) scale(1.023, 1.03);
+    transform: translate(-10px, -8px) scale(1.023, 1.03);
   }
 
   50% {
-    transform: translate(10px,8px) scale(1.0,1.0);
+    -webkit-transform: translate(10px, 8px) scale(1, 1);
+    transform: translate(10px, 8px) scale(1, 1);
+  }
+}
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }

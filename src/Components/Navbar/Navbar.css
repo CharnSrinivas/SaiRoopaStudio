@@ -2,12 +2,12 @@ nav {
   background-color: white;
   width: 100%;
   display: flex;
-  z-index: 1;
-  /* background-color: transparent; */
+  z-index: 1000;
   justify-content: center;
   margin: 0;
   padding:0;
   align-items: center;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
 }
 .logo 
 {
@@ -46,6 +46,7 @@ nav {
   background-color: var(--light-green);
   border-radius: 50%;
 }
+
 nav ul {
   margin-right: 3em;
   display: flex;
@@ -55,24 +56,32 @@ nav ul {
 }
 nav ul li {
   padding-left: 2em;
-}
 
-nav ul li a {
   font-family: "Poppins", sans-serif;
-  padding: 5px;
+  padding: 5px 15px 5px 15px;
+  text-align:center;
   border-radius: 10px;
   color: rgb(25, 25, 25);
   font-size: var(--font-size-sm);
-  text-decoration: none;
   font-weight: 600;
+  cursor: pointer;
 }
 
-.nav-items li a:hover{ 
-  color: var(--primary);
-  text-decoration: underline;
-  text-decoration-thickness: 0.2em;
+nav ul li:hover{ 
+  background-color: hsla(var(--primary-hue),80%,90%);
+
   transition: all 0.2s linear;
   border-color: #dddddd;
+  
+}
+
+nav ul .active-nav-item{
+  transition:  none !important;
+  color: hsl(0, 0%, 90%);
+  background-color: hsla(var(--primary-hue),80%,60%) !important;
+}
+nav ul .active-nav-item:hover{
+  background-color: hsla(var(--primary-hue),80%,60%) !important;
   
 }
 .burger {
@@ -102,7 +111,7 @@ nav ul li a {
   overflow: hidden;
   transition: 0.5s ease ;
   opacity: 0;
-  /* display: none; */
+  display: none;
 }
 #check {
   display: none;
@@ -125,6 +134,7 @@ nav ul li a {
   transform: translateY(0%);
 }
 #check:checked ~ .overlay{
+  display: block;
   opacity: 1;
   
 }
@@ -132,8 +142,9 @@ nav ul li a {
   nav ul {
     width: 100%;
   }
-  nav ul li a {
+  nav ul li {
     font-size: var(--font-size-sm);
+    margin:auto 5px auto 5px;
   }
   .logo {
     margin-left: 2.5em;
@@ -148,13 +159,11 @@ nav ul li a {
 @media screen and (max-width: 900px) {
   .burger {
     display: flex;
-    /* position: fixed; */
   }
 
   nav {
     padding-top: 1em;
     justify-content: space-between;
-    /* background-color: transparent; */
   }
 
   .logo {
@@ -167,7 +176,7 @@ nav ul li a {
   .logo-name{
       font-size: var(--font-size-mid);
   }
-  nav ul li a {
+  nav ul li  {
     color: #fff;
 font-size:var(--font-size-xsm)
   }
@@ -196,7 +205,7 @@ font-size:var(--font-size-xsm)
     width: 50px;
     height: 50px;
   }
-    nav ul li a{
+    nav ul li {
       font-size: var(--font-size-xsm);
     }
     

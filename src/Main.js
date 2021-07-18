@@ -12,9 +12,7 @@ const Contactpage = React.lazy((() => import('./Pages/Contactpage/Contactpage'))
 var onWindowChangeTriggerEvents = []
 
 
-//  API_KEY = FFDE63E8B5AB9952E899F45A8377A826559E64EABC1A62AE796808E243F0D9C470F18ADC611B11953D019EED0E281454
-
-
+//API_KEY = FFDE63E8B5AB9952E899F45A8377A826559E64EABC1A62AE796808E243F0D9C470F18ADC611B11953D019EED0E281454
 
 
 export const addTriggerEventToOnWindowChange = (triggerEvent) => {
@@ -26,14 +24,17 @@ const onWindowChange = () => {
         onWindowChangeTriggerEvents.forEach(element => {
             if (element) element()
         }
-         
-    );
+
+        );
     }
 }
 
 export default class Main extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            isLoaded: false
+        }
 
         window.addEventListener('resize', () => {
             onWindowChange()
@@ -44,23 +45,24 @@ export default class Main extends React.Component {
             easing: 'ease-in-out-sine',
             delay: 200,
         })
-
-        
     }
-    componentDidMount(){
-
+    componentDidMount() {
+        this.setState({ isLoaded: true })
     }
     render() {
         return (
-            <>
-                <Suspense fallback={<Spinner />} >
-                    <Homepage backgroundImageName={'1'} />
-                    <Servicespage />
-                    <Aboutpage />
-                    <Collectionspage />
-                    <Contactpage />
-                </Suspense>
-            </>
+
+            <Suspense fallback={<Spinner />} >
+                {this.state.isLoaded &&
+                 <>
+                    <div id='00' ><Homepage backgroundImageName={'2'} /></div>
+                    <div id='01' ><Servicespage /></div>
+                    <div id='02' ><Aboutpage /></div>
+                    <div id='03' ><Collectionspage /></div>
+                    <div id='04' ><Contactpage /></div>
+                </>}
+            </Suspense>
+
         )
     }
 }

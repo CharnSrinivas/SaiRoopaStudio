@@ -1,3 +1,4 @@
+
 .collections-page {
   margin:2em auto  3em auto;
   width: 100%;
@@ -14,6 +15,7 @@
 
 .tab-view-item {
   margin: 3rem auto;
+  display: -ms-grid;
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
   grid-gap: 5px;
@@ -21,15 +23,21 @@
 .tab-view-item-image-wrapper {
   border: 2px solid #ccc;
   border-radius: 10px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   
   margin: 8px;
   background-color: rgba(97, 40, 40, 0.15);
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
 .tab-view-item-image-wrapper:hover {
   background-color: transparent;
-  transform: scale(1.03);
+  -webkit-transform: scale(1.03);
+      -ms-transform: scale(1.03);
+          transform: scale(1.03);
   
 }
 .tab-view-item-image {
@@ -38,6 +46,7 @@
   mix-blend-mode: multiply;
   position: relative;
   border-radius: inherit;
+  cursor:-webkit-zoom-in;
   cursor:zoom-in;
 }
 

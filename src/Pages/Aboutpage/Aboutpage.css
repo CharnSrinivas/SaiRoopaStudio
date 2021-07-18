@@ -1,3 +1,5 @@
+
+
 .about-page {
   font-family: "Poppins", sans-serif;
   width: 100%;
@@ -22,9 +24,16 @@
   font-weight: bold;
 }
 .about-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: auto;
   width: 90%;
   
@@ -45,11 +54,16 @@
   width: 500px;
   margin: 0;
   border-radius: 20px;
-  box-shadow: 0 0 5px rgba(0, 0, 0,0.5);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0,0.5);
+          box-shadow: 0 0 5px rgba(0, 0, 0,0.5);
+  -webkit-transition:  ease 0.3s;
+  -o-transition:  ease 0.3s;
   transition:  ease 0.3s;
 }
 .profile-img-div img:hover{
-  transform: scale(1.0);
+  -webkit-transform: scale(1.0);
+      -ms-transform: scale(1.0);
+          transform: scale(1.0);
 
 }
 .profile-img-div {
@@ -70,9 +84,16 @@
 }
 @media screen and (max-width: 900px) {
   .about-content {
-    flex-direction: column-reverse;
-    justify-content: none;
-    align-items: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-pack: none;
+        -ms-flex-pack: none;
+            justify-content: none;
+    -webkit-box-align: none;
+        -ms-flex-align: none;
+            align-items: none;
   }
   .profile-img-div {
     margin: 0;

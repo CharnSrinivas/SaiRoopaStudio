@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 .services-page {
   /* height: 60vh; */
   width: 100%;
@@ -12,7 +19,9 @@
   letter-spacing: 1.5px;
 }
 .cards-layout {
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   display: block;
 }
 .arrow {
@@ -23,13 +32,24 @@
   height: 40px;
   position: relative;
   top: 50%;
-  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+          transform: translate(0, -50%);
   z-index: 100;
   margin: 0 0.6em 0 0.6em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 .arrow:disabled {
   cursor: not-allowed;
@@ -40,22 +60,33 @@
   width: 1.3em;
   height: 0.18em;
   background-color: var(--black);
+  -webkit-transition: 0.1s ease-in-out;
+  -o-transition: 0.1s ease-in-out;
   transition: 0.1s ease-in-out;
 }
 .top-arrow-line {
-  transform: rotateZ(50deg);
+  -webkit-transform: rotateZ(50deg);
+      -ms-transform: rotate(50deg);
+          transform: rotateZ(50deg);
 }
 .bottom-arrow-line {
-  transform: rotateZ(-50deg);
+  -webkit-transform: rotateZ(-50deg);
+      -ms-transform: rotate(-50deg);
+          transform: rotateZ(-50deg);
 }
 .left {
-  transform: rotateY(180deg) translate(0, -50%);
+  -webkit-transform: rotateY(180deg) translate(0, -50%);
+          transform: rotateY(180deg) translate(0, -50%);
 }
 .arrow:active .top-arrow-line {
-  transform: rotateZ(35deg);
+  -webkit-transform: rotateZ(35deg);
+      -ms-transform: rotate(35deg);
+          transform: rotateZ(35deg);
 }
 .arrow:active .bottom-arrow-line {
-  transform: rotateZ(-35deg);
+  -webkit-transform: rotateZ(-35deg);
+      -ms-transform: rotate(-35deg);
+          transform: rotateZ(-35deg);
 }
 .arrow:active .arrow-line {
   margin: -5px;
