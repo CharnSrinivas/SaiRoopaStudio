@@ -11,8 +11,8 @@ export default function ImageViewModel({ placeholder, src, key, onCancel }) {
             </div>
             <div 
             className={styles['cancel-btn']}onClick={onCancel}>
-                <span className={`${styles['line']} ${styles['line1']}`}></span>
-                <span className={`${styles['line']} ${styles['line2']}`}></span>
+            {/* <span className={`${styles['line']} ${styles['line1']}`}></span> */}
+            {/* <span className={`${styles['line']} ${styles['line2']}`}></span> */}
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 from email.message import EmailMessage
 import smtplib
 from flask import blueprints,request,jsonify
-import base64
+import base64,threading
 
 from flask.wrappers import Response
 
@@ -24,13 +24,10 @@ def getDataFromRequest(data):
                 name = data['name'],
                 subject =data['subject']
                 message = data['message']
-                print('  +++++++++++++++++ email  \n      pwd     \n          naem  \n          subject     \n      message ')
                 
                 if(data['base64_img']): #* checkign if image is sent 
                     img = getDecodedImage(data['base64_img'])
-                    print(' ++++ \n image recieved  +++++')
                 else:
-                    print(' ++++ \n image NOt recieved  +++++')
                     img = None    
                 
                 img_type = data['img_type']
@@ -46,18 +43,19 @@ def getDataFromRequest(data):
                     'img_name':img_name,
                     'img_type':img_type
                     }
-                return data 
+                return data; 
 
         except Exception as exec:
             
             return None
-        
+
+
+    
     
 @emailApi.route('/send',methods=['POST'])
 def send_mail():
     if request.method == 'POST':
         try:
-            print('---------------      Response    ----------------------')
             data = getDataFromRequest(request.get_json(force=True))
             if(data):
                 email = data['email']
@@ -77,9 +75,11 @@ def send_mail():
                     server.starttls()
                     server.ehlo()
                     server.login(email,pwd)
-                    server.send_message(msg);
-                    print('++++++++++ Mail Send  +++++++++++++++')
+                    def senMessage():
+                        server.send_message(msg)
+                    threading.Thread(target=senMessage).start()
                     return Response(status=200)
+                    
                 except Exception as exec:   
                     return Response(status=400)  , 'SMTP Error!'
             else:

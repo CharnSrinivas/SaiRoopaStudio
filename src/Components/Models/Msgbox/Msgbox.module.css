@@ -1,0 +1,79 @@
+.model {
+
+  --model-height :5vh;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  width: 100vw;
+  min-height: var(--model-height);
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vh;
+  border-radius: 5px;
+  transform: translate(0,-100%);
+  transition:transform 0.3s ease-in-out;
+  /* display: none; */
+}
+.model[data-open]{
+  transform: translate(0,0);
+
+}
+.model[data-close]{
+  transform: translate(0,-100%);
+}
+.model[data-success] {
+  display: flex;
+  background-color: var(--success);
+  color: var(--success-text);
+  border: 1px solid var(--success-border);
+}
+.model[data-success] ~.cancel-btn{
+  color: var(--success-text);
+  
+}
+.model[data-danger]~.cancel-btn{
+  color: var(--danger-text);
+
+}
+.model[data-danger] {
+  display: flex;
+  background-color: var(--danger);
+  color: var(--danger-text);
+  border: 1px solid var(--danger-border);
+
+}
+.model p{
+  width: 85%; 
+}
+.cancel-btn {
+  right: 10vw;
+  cursor: pointer;
+  height: calc(var(--model-height) - calc(var(--model-height) / 3));
+  position: relative;
+}
+.cancel-btn::before,
+.cancel-btn::after {
+  content: "";
+  position: absolute;
+  background-color: var(--black);
+  border-radius: 5px;
+  width: 2px;
+  height: 100%;
+}
+.cancel-btn::after {
+  right: 50%;
+  transform: translateX(50%) rotate(42deg);
+}
+.cancel-btn::before {
+  left: 50%;
+  transform: translate(-50%) rotate(-42deg);
+}
+
+@media screen and (max-width:500px) 
+{
+ 
+}

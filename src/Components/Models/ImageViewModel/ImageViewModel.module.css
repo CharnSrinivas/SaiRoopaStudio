@@ -31,38 +31,37 @@
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   display: flex;
-  justify-content: center;align-items: center;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   z-index: inherit;
-
 }
-.cancel-btn .line{
-  background-color: var(--black);
+.cancel-btn::before,
+.cancel-btn::after {
+  content: "";
   position: absolute;
-  height: 90%;
-  border-radius: 3px;
-  width: 4px;
-}
-.line1{
-  left: 50%;
+  background-color: var(--black);
+  border-radius: 5px;
+  width: 2.5px;
+  height: 80%;
   
-  transform: rotate(40deg) translateX(-50%);
 }
-.line2{
+.cancel-btn::after {
   right: 50%;
-  transform: rotate(-40deg) translateX(50%);
-
+  transform:translateX(50%) rotate(42deg);
 }
-.model img {
+.cancel-btn::before {
+  left: 50%;
+  transform:translate(-50%) rotate(-42deg);
+}
 
+.model img {
   width: 100%;
   border-radius: 12px;
 }
 
-@media screen and (max-width:900px)
-{
-  .model{
-    
+@media screen and (max-width: 900px) {
+  .model {
     width: 90%;
   }
 }

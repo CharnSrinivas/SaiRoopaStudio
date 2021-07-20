@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 import { addTriggerEventToOnWindowChange } from '../../Main';
-import { sendMail } from '../../utils/utils';
-import styles from './Contactpage.module.css'
+import Msgbox from '../../Components/Models/Msgbox/Msgbox';
+import styles from './Contactpage.module.css';
 
 
 export default class Contactpage extends Component {
@@ -16,15 +16,35 @@ export default class Contactpage extends Component {
         this.phoneInputRef = React.createRef();
         this.submitBtnSpinnerRef = React.createRef();
 
+        this.msgBoxCloseTimeout = 1000 * 4;  //* close message box after 5 secs
         this.maxMobileWidth = 901;
-        this.state = {
-            isMobile: window.innerWidth < this.maxMobileWidth
+        this.state =
+        {
+            isMobile: window.innerWidth < this.maxMobileWidth,
+            showMsgBox: false,
+            msgBoxText: '',
+            msgBoxType: '',
+        };
+    }
+
+    showMsgBox = (boxType, msg) => {
+        let msgBoxText = ''
+        if (!msg) {
+            if (boxType === 'success') {
+                msgBoxText = 'Successfully message sent. We will get back to you soon. '
+            } else if (boxType === 'danger') {
+                msgBoxText = 'Oops something went wrong, Unable to send message !'
+            }
+        }else{
+            msgBoxText = msg;
         }
-
+        this.setState({
+            msgBoxText: msgBoxText,
+            msgBoxType: boxType,
+            showMsgBox: true
+        })
     }
-    send(data) {
 
-    }
 
     Submit = () => {
         try {
@@ -36,7 +56,7 @@ export default class Contactpage extends Component {
             let fromMail = process.env['REACT_APP_EMAIL'];
             let appPassword = process.env['REACT_APP_EMAIL_APP_PASSWORD'];
             let mailApiUrl = process.env['REACT_APP_API_ROOT_MAIL_SEND_URL'];
-            // let mailApiUrl = ' http://127.0.0.1:5000/srstudio/mail/send'
+            // let mailApiUrl = ' http://127.0.0.1:8000/srstudio/mail/send'
             let imgFile = this.imageInputRef.current.files[0];
             let img_name = null;
             let img_type = null;
@@ -65,17 +85,19 @@ export default class Contactpage extends Component {
                     try {
                         data.base64_img = reader.result.split(',')[1];
                         data.img_type = ((reader.result).split(';')[0]).split('/')[1];
-
                         fetch(mailApiUrl, { method: 'POST', body: JSON.stringify(data) })
                             .catch(err => {
                                 console.log(err);
-                                this.submitBtnSpinnerRef.current.style.display = 'none'
+                                this.showMsgBox('danger');
+                                this.submitBtnSpinnerRef.current.style.display = 'none';
                             }).then((res) => {
-                                console.log(res)
+                                console.log(res);
+                                this.showMsgBox('success');
                                 this.submitBtnSpinnerRef.current.style.display = 'none'
                             })
 
                     } catch (error) {
+                        this.showMsgBox('danger');
                         this.submitBtnSpinnerRef.current.style.display = 'none'
                     }
 
@@ -90,10 +112,12 @@ export default class Contactpage extends Component {
                 })
                     .catch(err => {
                         console.log(err);
+                        this.showMsgBox('danger');
                         this.submitBtnSpinnerRef.current.style.display = 'none'
                     })
                     .then((res) => {
-                        console.log(res)
+                        console.log(res);
+                        this.showMsgBox('success');
                         this.submitBtnSpinnerRef.current.style.display = 'none'
                     })
             }
@@ -103,10 +127,9 @@ export default class Contactpage extends Component {
         }
 
     }
-
     componentDidMount() {
+
         addTriggerEventToOnWindowChange(() => { this.setState({ isMobile: window.innerWidth < this.maxMobileWidth }) })
-        // document.getElementById().getBoundingClientRect
     }
     leftBlock = () => {
 
@@ -257,6 +280,14 @@ export default class Contactpage extends Component {
     render() {
         return (
             <div className={styles['contact-page']}>
+                {
+                    this.state.showMsgBox &&
+                    <Msgbox msgText={this.state.msgBoxText}
+                        msgType={this.state.msgBoxType}
+                        onClose={() => { this.setState({ showMsgBox: false }) }}
+                        // timeOutToClose={this.msgBoxCloseTimeout}
+                    />
+                }
                 <div className={styles['contact-page-container']}>
                     {!this.state.isMobile && this.desktoptView()}
                     {this.state.isMobile && this.mobileView()}
