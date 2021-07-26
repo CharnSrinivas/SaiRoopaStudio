@@ -1,0 +1,27 @@
+.footer{
+    background-color: hsl(25, 100%, 80%);
+    width: 100vw;
+    height: auto;
+    color: var(--black);
+    display: flex;
+    justify-content: center;align-items: center;
+    font-size: var(--font-size-xsm);
+    font-weight: 500;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
+}
+
+@media screen and (max-width:500px) {
+        .footer{
+            font-size: calc(var(--font-size-xsm) - 1.5px);
+        }
+        .container{
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+}

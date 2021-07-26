@@ -28,6 +28,7 @@ export default class Navbar extends Component {
                 })
             }
         }
+        
         this.burgerNavRef.current.onchange = (event) => {
             if (this.bodyElement) {
                 event.target.checked ?
@@ -56,13 +57,13 @@ export default class Navbar extends Component {
                 </div>
                 <input ref={this.burgerNavRef} type='checkbox' id='check'  ></input>
 
-                <ul className='nav-items'>
+                <ul >
+
                     <li className={`nav-item ${this.activeNavItemClasName}`} ref={this.addToNavItemsRefs}  >Home</li>
                     <li className='nav-item ' ref={this.addToNavItemsRefs}  >Services</li>
                     <li className='nav-item ' ref={this.addToNavItemsRefs}  >About</li>
                     <li className='nav-item ' ref={this.addToNavItemsRefs}  >Collections</li>
                     <li className='nav-item ' ref={this.addToNavItemsRefs}  >Contact</li>
-
                 </ul>
 
                 <label htmlFor='check' className='burger' id='burger' >
@@ -70,7 +71,9 @@ export default class Navbar extends Component {
                     <div className='line2'></div>
                     <div className='line3'></div>
                 </label>
-                <div className='overlay'></div>
+                <div className='overlay' onClick={()=>{
+                    this.burgerNavRef.current.checked = false;this.bodyElement.style.overflow = 'auto';
+                    }}></div>
             </nav>
 
         )

@@ -26,14 +26,12 @@
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  
-  margin: 8px;
-  background-color: rgba(97, 40, 40, 0.15);
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
+  z-index: 2;
 }
-.tab-view-item-image-wrapper:hover {
+.tab-view-item-image-wrapper:hover > .tab-view-item-image{
   background-color: transparent;
   -webkit-transform: scale(1.03);
       -ms-transform: scale(1.03);
@@ -41,9 +39,12 @@
   
 }
 .tab-view-item-image {
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
   min-width: 100%;
   width: 100%;  
-  mix-blend-mode: multiply;
+  object-fit:contain;
   position: relative;
   border-radius: inherit;
   cursor:-webkit-zoom-in;
@@ -51,8 +52,3 @@
 }
 
 
-
-@media screen and (max-width:900px) {
-  /* .tab-view-item-image-wrapper{background-color: transparent;} */
-  
-}

@@ -56,7 +56,6 @@ nav ul {
 }
 nav ul li {
   padding-left: 2em;
-
   font-family: "Poppins", sans-serif;
   padding: 5px 15px 5px 15px;
   text-align:center;
@@ -103,6 +102,7 @@ nav ul .active-nav-item:hover{
   transition: 0.4s linear;
   background-color: var(--black);
 }
+
 .overlay{
   position: absolute;
   width: 100%;
@@ -123,14 +123,14 @@ nav ul .active-nav-item:hover{
 
 #check:checked ~ .burger > .line1 {
   transform: rotateZ(45deg) translate(0px, 0.7em);
-  background-color: #ffe3d9;
+  background-color: hsl(0,0%,90%);
 }
 #check:checked ~ .burger > .line3 {
   transform: rotateZ(-45deg) translate(-0px, -0.7em);
-  background-color: #ffe3d9;
+  background-color: hsl(0,0%,90%);
+
 }
-#check:checked ~ .nav-items {
-  /* transform: translateX(0%); */
+#check:checked ~ ul {
   transform: translateY(0%);
 }
 #check:checked ~ .overlay{
@@ -177,8 +177,9 @@ nav ul .active-nav-item:hover{
       font-size: var(--font-size-mid);
   }
   nav ul li  {
-    color: #fff;
-font-size:var(--font-size-xsm)
+    color: hsl(0, 0%, 90%);
+    font-size:var(--font-size-xsm);
+    
   }
   nav ul {
     background-color: var(--black);
@@ -187,8 +188,8 @@ font-size:var(--font-size-xsm)
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: space-evenly;
     position: absolute;
-    padding-bottom:5em;
     top: 0;
     right: 0;
     transform: translateX(100%);

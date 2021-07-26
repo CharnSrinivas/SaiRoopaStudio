@@ -46,31 +46,27 @@ export default class Servicespage extends Component {
       {
         iconName: 'cake',
         service: 'Event Photography',
-        discription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem laborum labore aliquid possimus'
-
+        description: 'If it\'s Candid & Contemporary event then we are here for you .Our photographers come to your location and set up the event environment and enhance the feel of occasion.'
       },
       {
         iconName: 'ring',
         service: 'Wedding Photography',
-        discription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem laborum labore aliquid possimus'
-
+        description: "Our wedding photographers can capture the elegance,romance amusing components of your wedding ceremony from beginning to end to help you to hold memories life long."
       },
       {
         iconName: 'camera',
-        service: 'Fahion Photography',
-        discription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem laborum labore aliquid possimus'
-
+        service: 'Modelling Photoshoot',
+        description: 'Your non-public picturegraph consultation on the area of your choice. We could make picturegraph albums with photos of your choice.'
       },
       {
         iconName: 'computer',
-        service: 'Photo Editing',
-        discription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem laborum labore aliquid possimus'
-
+        service: 'Photo & Viedo Editing',
+        description: 'Our experienced editors retouch and enhance your digital photos.We are special in making video and photo albums.'
       },
       {
         iconName: 'color_plate',
         service: 'B&W to Color Photo',
-        discription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem laborum labore aliquid possimus'
+        description: 'Colorize photos with us,turning black and white pics to color and making it unique to you.'
 
       },
     ]
@@ -80,7 +76,7 @@ export default class Servicespage extends Component {
     return this.services.map((service, index) => {
       return (
 
-        <Servicecard key={index} iconName={service.iconName} heading={service.service} discription={service.discription} />
+        <Servicecard key={index} iconName={service.iconName} heading={service.service} description={service.description} />
       )
     })
   }

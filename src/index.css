@@ -34,6 +34,7 @@
   --font-size-mid: 23px;
   --font-size-sm: 20px;
   --font-size-xsm: 15px;
+  --font-size-xxsm: 13px;
 }
 html {
   scroll-behavior: smooth;
@@ -53,10 +54,7 @@ body {
   overflow-y: scroll;
   max-width: 100% !important;
   background-color: var(--background-color);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  
 }
 
 code {

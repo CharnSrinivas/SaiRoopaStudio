@@ -22,6 +22,7 @@
   position: relative;
 }
 
+
 .contact-page-container {
   background-position: center;
   margin-bottom: 5em;
@@ -276,7 +277,7 @@ form {
 }
 .submit-btn {
   background-color: var(--primary);
-  color: hsl(0, 0%, 90%);
+  color: hsl(0, 0%, 100%);
   font-weight: 500;
   letter-spacing: 0.05em;
   height: 1.7em;
@@ -368,17 +369,20 @@ form {
   border-color: var(--primary);
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 800px) {
   .contact-page-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
-    flex-direction: column;
+    flex-direction:column;
     width: 100%;
   }
-  .left-block {
-    display: block;
-    width: 100%;
+  .left-block{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+
+    width: 90%;
   }
   .left-block-text h1 {
     width: 100%;
@@ -387,17 +391,19 @@ form {
     font-size: calc(var(--font-size-xlarge) + 2px);
   }
   .left-block-text p {
-    width: 70%;
+    width: 80%;
     margin: 1em auto;
-    text-align: center;
+
   }
   .contacts {
-    margin: auto;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
+    margin-top: 20px !important;
+    align-self: flex-start;
+    margin-left: 10%;
+    
   }
+  
   .contact-card {
+    width: 90%;
     margin-bottom: 0;
   }
 
@@ -407,11 +413,8 @@ form {
   .contacts div img {
     width: 28px;
   }
-  .left-block,
   .right-block {
     width: 100%;
-  }
-  .right-block {
     margin: 50px auto 100px auto;
   }
   .left-block-svg {

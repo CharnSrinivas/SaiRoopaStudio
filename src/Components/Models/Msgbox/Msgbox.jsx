@@ -7,6 +7,10 @@ export default class Msgbox extends React.Component {
 
         this.modelRef = React.createRef();
         this.cancelBtnRef = React.createRef();
+        this.state={
+            msgType :this.props.msgType,
+            msgText:this.props.msgText,
+        }
 
     }
     closeModel = () => {
@@ -20,11 +24,11 @@ export default class Msgbox extends React.Component {
 
     componentDidMount() {
         // document.getElementById().removeAttribute
-        if (this.props.msgType === 'success') {
+        if (this.state.msgType === 'success') {
             this.modelRef.current.removeAttribute('data-danger')
             this.modelRef.current.setAttribute('data-success', '')
         }
-        else if (this.props.msgType === 'danger') {
+        else if (this.state.msgType === 'danger') {
             this.modelRef.current.removeAttribute('data-success')
             this.modelRef.current.setAttribute('data-danger', '')
         }
@@ -43,12 +47,14 @@ export default class Msgbox extends React.Component {
 
             }, this.props.timeOutToClose)
         }
+
     }
+    
 
     render() {
         return (
             <div ref={this.modelRef} className={styles['model']} >
-                <p className={styles['text']}>{this.props.msgText}</p>
+                <p className={styles['text']}>{this.state.msgText}</p>
                 <span ref={this.cancelBtnRef} className={styles['cancel-btn']}></span>
             </div >
         )

@@ -16,7 +16,7 @@ export default class Contactpage extends Component {
         this.phoneInputRef = React.createRef();
         this.submitBtnSpinnerRef = React.createRef();
 
-        this.msgBoxCloseTimeout = 1000 * 4;  //* close message box after 5 secs
+        this.msgBoxCloseTimeout = 1000 * 5;  //* close message box after 5 secs
         this.maxMobileWidth = 901;
         this.state =
         {
@@ -31,15 +31,15 @@ export default class Contactpage extends Component {
         let msgBoxText = ''
         if (!msg) {
             if (boxType === 'success') {
-                msgBoxText = 'Successfully message sent. We will get back to you soon. '
+                this.setState({msgBoxText : 'Successfully message sent. We will get back to you soon. '})
             } else if (boxType === 'danger') {
-                msgBoxText = 'Oops something went wrong, Unable to send message !'
+                this.setState({msgBoxText : 'Oops something went wrong, Unable to send message !'});
             }
         }else{
             msgBoxText = msg;
         }
         this.setState({
-            msgBoxText: msgBoxText,
+            
             msgBoxType: boxType,
             showMsgBox: true
         })
@@ -87,11 +87,9 @@ export default class Contactpage extends Component {
                         data.img_type = ((reader.result).split(';')[0]).split('/')[1];
                         fetch(mailApiUrl, { method: 'POST', body: JSON.stringify(data) })
                             .catch(err => {
-                                console.log(err);
                                 this.showMsgBox('danger');
                                 this.submitBtnSpinnerRef.current.style.display = 'none';
                             }).then((res) => {
-                                console.log(res);
                                 this.showMsgBox('success');
                                 this.submitBtnSpinnerRef.current.style.display = 'none'
                             })
@@ -111,12 +109,10 @@ export default class Contactpage extends Component {
                     body: JSON.stringify(data)
                 })
                     .catch(err => {
-                        console.log(err);
                         this.showMsgBox('danger');
                         this.submitBtnSpinnerRef.current.style.display = 'none'
                     })
                     .then((res) => {
-                        console.log(res);
                         this.showMsgBox('success');
                         this.submitBtnSpinnerRef.current.style.display = 'none'
                     })
@@ -137,7 +133,7 @@ export default class Contactpage extends Component {
             <div className={styles['left-block']}>
                 <div className={styles['left-block-text']}>
                     <h1>Fell free to contact</h1>
-                    <p>Fill  the form and message us we will get back to you. </p>
+                    <p>Give us a call or send us an email with any questions.We will get back to you. </p>
                 </div>
                 <div className={styles['contacts']}>
                     <div className={`${styles['phone']} ${styles['contacts-item']}`}>
@@ -169,7 +165,7 @@ export default class Contactpage extends Component {
                     <form id='contact-card-form'  >
 
                         <div className={`${styles['name-section']} ${styles['card-section']}`}>
-                            <p>your name</p>
+                            <p>Your name</p>
                             <div className={styles['card-input-item']}>
                                 <input ref={this.nameInputRef} id='name-input' type='name' placeholder='Name' />
                                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles['person-outline-svg']} >
@@ -249,7 +245,7 @@ export default class Contactpage extends Component {
         )
     }
 
-    mobileView = () => {
+    /*mobileView = () => {
         return (
             <>
                 <div className={styles['left-block']}>
@@ -275,7 +271,7 @@ export default class Contactpage extends Component {
                 </div>
             </>
         )
-    }
+    }*/
 
     render() {
         return (
@@ -285,12 +281,12 @@ export default class Contactpage extends Component {
                     <Msgbox msgText={this.state.msgBoxText}
                         msgType={this.state.msgBoxType}
                         onClose={() => { this.setState({ showMsgBox: false }) }}
-                        // timeOutToClose={this.msgBoxCloseTimeout}
+                        timeOutToClose={this.msgBoxCloseTimeout}
                     />
                 }
                 <div className={styles['contact-page-container']}>
-                    {!this.state.isMobile && this.desktoptView()}
-                    {this.state.isMobile && this.mobileView()}
+                     {this.desktoptView()}
+                    {/* {this.state.isMobile && this.mobileView()} */}
                 </div>
             </div>
         )

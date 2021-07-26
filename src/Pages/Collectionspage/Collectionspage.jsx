@@ -7,7 +7,7 @@ import ImageViewModel from '../../Components/Models/ImageViewModel/ImageViewMode
 import styles from './Collectionspage.module.css'
 import { addTriggerEventToOnWindowChange } from '../../Main';
 
-const colors = require('../../Constants/colors')
+const colors = require('../../Constants/consts')
 const utils = require('../../utils/utils')
 
 export const TabContentPhoto = ({ originalImageSrc, mediumImagesSrc, placeHolderImageSrc, index,
