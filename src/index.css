@@ -3,6 +3,7 @@
   --primary-saturation: 87%;
   --primary-lightness: 50%;
   --black-hue: 198;
+  --background-color: hsl(25, 100%, 95%);
 
   /* --success:hsla(120, 39%, 54%,0.9) ; */
   /* --danger :hsla(5, 70%, 58%,0.9); */
@@ -13,7 +14,10 @@
   --danger :hsl(355, 70%, 91%);
   --danger-border:hsl(355, 70%, 75%);
   --danger-text:hsl(354, 61%, 28%);
-  --background-color: hsl(25, 100%, 95%);
+
+  --warning:#e2e3e5;
+  --warning-border:#d6d8db;;
+  --warning-text:#383d41;
 
   --primary: #ef7512;
   --secondary: #a34d07;

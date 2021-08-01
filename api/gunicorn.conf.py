@@ -2,4 +2,4 @@ import multiprocessing
 
 # bind = "127.0.0.1:5000"
 workers = multiprocessing.cpu_count() * 2 + 1
-timeout = 60 * 3 #time out of each workder in seconds
+timeout = 60 * 2.5#time out of each workder in seconds

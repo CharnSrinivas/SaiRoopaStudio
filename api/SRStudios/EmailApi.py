@@ -2,12 +2,16 @@ from email.message import EmailMessage
 import smtplib
 from flask import blueprints,request,jsonify
 import base64,threading
-
+from validate_email import validate_email
 from flask.wrappers import Response
+from werkzeug.wrappers.request import PlainRequest
+
+
+GreetingMsg = "Thank you for contacting us,We got your message we'll get back to you."
+
 
 #***** ? Blueprint of emial api **************************
 emailApi = blueprints.Blueprint('emailApi',__name__)
-
 
 #*  ___________________   Decoding base64 to original image    ___________________
 def getDecodedImage(base64img):
@@ -24,7 +28,7 @@ def getDataFromRequest(data):
                 name = data['name'],
                 subject =data['subject']
                 message = data['message']
-                
+                userMail = data['user_mail']
                 if(data['base64_img']): #* checkign if image is sent 
                     img = getDecodedImage(data['base64_img'])
                 else:
@@ -36,8 +40,9 @@ def getDataFromRequest(data):
                 data = {
                     'email':email,
                     'app_pwd':app_pwd,
+                    'user_mail':userMail,
                     'message':message,
-                    'name':name,
+                    'name':str(name),
                     'subject':subject,
                     'img':img,
                     'img_name':img_name,
@@ -60,21 +65,34 @@ def send_mail():
             if(data):
                 email = data['email']
                 pwd = data['app_pwd']
+                userMail = data['user_mail']
+                server = smtplib.SMTP("smtp.gmail.com",587)
+                print(data)
+                server.ehlo()
+                server.starttls()
+                server.ehlo()
+                server.login(email,pwd)
+                print("logged in")
+                try:
+                    greetingMsg = EmailMessage()
+                    greetingMsg['From'] = email
+                    greetingMsg['To'] = userMail
+                    greetingMsg['Subject'] = 'Sai Roopa Studio'
+                    greetingMsg.set_content(GreetingMsg)
+                    server.send_message(greetingMsg)
+                except Exception as exec:
+                    print(exec)
+                    return Response(status=500) , "Invalid Email"
+
                 msg = EmailMessage()
                 msg['From']  = email
                 msg['To'] = email
                 msg['Subject'] = data['subject']
-                if (data['message']):
-                    msg.set_content(data['message'])
-                    
+                if (data['message'] and email):
+                    msg.set_content("Message :\n"+data['message']+"\n\n Email: \n"+email)
                 if (data['img'] and data['img_name'] and data['img_type']):
                     msg.add_attachment(data['img'],maintype='image',subtype=data['img_type'],filename=data['img_name'])
                 try:
-                    server = smtplib.SMTP("smtp.gmail.com",587)
-                    server.ehlo()
-                    server.starttls()
-                    server.ehlo()
-                    server.login(email,pwd)
                     def senMessage():
                         server.send_message(msg)
                     threading.Thread(target=senMessage).start()

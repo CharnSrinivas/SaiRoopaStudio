@@ -5,4 +5,4 @@ export var light_green= '#19a890';
 export var green= '#1f766c';
 export var red ='#cd3f1c';
 
-export var  phNo = '9347131345';
+export var  phNo = '9299655518';

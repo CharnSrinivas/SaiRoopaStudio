@@ -1,40 +1,60 @@
 .wrapper {
-  --spinner-width: 150px;
-  --spinner-height: 150px;
-  --spinner-thickness: 10px;
-  width: var(--spinner-width);
-  height: var(--spinner-height);
   position: absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0px;
 }
-.spinner-text{
-    font-size: 23px;
-    font-weight:400 ;
-    animation: fade 2s linear infinite;
-}
-.spinner {
-  position: absolute;
-  
-  border-radius: 50%;
+.container {
+  position: relative;
   width: 100%;
+  margin: 0;
   height: 100%;
-  border: var(--spinner-thickness) solid transparent;
 }
-.first {
-  border-top: var(--spinner-thickness) solid lightcoral;
+.logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: fade 2s ease-in-out infinite;
+}
+
+.circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+  border: 3.5px solid transparent;
+  border-top: 3.5px solid rgb(92, 92, 92);
+  border-left: 3.5px solid rgb(92, 92, 92);
+}
+.one {
+  width: 200px;
+  height: 200px;
+}
+.one-div {
+  transform: rotate(-30deg);
   animation: spin 1.5s ease-in infinite;
 }
-
-.second {
-  border-top: var(--spinner-thickness) solid var(--light-green);
-  animation: spin 2s ease-out infinite;
+.two {
+  width: 160px;
+  height: 160px;
 }
+.two-div{
+  transform: rotate(-20deg);
+  animation: spin 1s ease-out infinite;
 
+}
+.three{
+  width: 115px;
+  height: 115px;
+}
+.three-div{
+  transform: rotate(-65deg);
+  animation: spin 1.5s ease-in-out infinite;
+}
 @keyframes spin {
   from {
     transform: rotate(0);
@@ -44,9 +64,15 @@
   }
 }
 @keyframes fade {
-    0%,100%{
+  0%,
+  100% {
     opacity: 1;
-    }
-    25%,75%{opacity: 0.5}
-    50%{opacity: 0.1;}
+  }
+  25%,
+  75% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }

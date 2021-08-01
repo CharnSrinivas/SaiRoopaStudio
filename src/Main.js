@@ -44,18 +44,18 @@ export default class Main extends React.Component {
     }
     render() {
         return (
-
-            <Suspense fallback={<Spinner />} >
-                {this.state.isLoaded &&
-                    <>
-                        <div id='00' ><Homepage backgroundImageName={'0'} /></div>
-                        <div id='01' ><Servicespage /></div>
-                        <div id='02' ><Aboutpage /></div>
-                        <div id='03' ><Collectionspage /></div>
-                        <div id='04' ><Contactpage /></div>
-                        <div id='05'><Footer /></div>
-                    </>}
-            </Suspense>
+                <Spinner/>
+            // <Suspense fallback={<Spinner />} >
+            //     {this.state.isLoaded &&
+            //         <>
+            //             <div id='00' ><Homepage backgroundImageName={'0'} /></div>
+            //             <div id='01' ><Servicespage /></div>
+            //             <div id='02' ><Aboutpage /></div>
+            //             <div id='03' ><Collectionspage /></div>
+            //             <div id='04' ><Contactpage /></div>
+            //             <div id='05'><Footer /></div>
+            //         </>}
+            // </Suspense>
 
         )
     }

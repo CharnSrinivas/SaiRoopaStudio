@@ -26,10 +26,17 @@ export default class Msgbox extends React.Component {
         // document.getElementById().removeAttribute
         if (this.state.msgType === 'success') {
             this.modelRef.current.removeAttribute('data-danger')
+            this.modelRef.current.removeAttribute('data-warning')
             this.modelRef.current.setAttribute('data-success', '')
+        }
+        else if (this.state.msgType === 'warning') {
+            this.modelRef.current.removeAttribute('data-success')
+            this.modelRef.current.removeAttribute('data-danger')
+            this.modelRef.current.setAttribute('data-warning', '')
         }
         else if (this.state.msgType === 'danger') {
             this.modelRef.current.removeAttribute('data-success')
+            this.modelRef.current.removeAttribute('data-warning')
             this.modelRef.current.setAttribute('data-danger', '')
         }
         this.openModel();
