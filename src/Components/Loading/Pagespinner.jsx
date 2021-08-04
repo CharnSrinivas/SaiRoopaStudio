@@ -4,7 +4,7 @@ export default function Spinner() {
     return (
         <div className='wrapper'>
             <div className='container'>
-                <img className='logo' src={require('../../assets/images/Logo.png').default} />
+                <img className='spinner-logo' src={require('../../assets/images/Logo.png').default} />
                 {/* <div className='spinner-text'>Loading</div> */}
                 {/* <div className='first spinner'></div> */}
                 {/* <div className='second spinner'></div> */}

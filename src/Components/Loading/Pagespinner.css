@@ -1,5 +1,8 @@
+
 .wrapper {
+  user-select: none;
   position: absolute;
+  
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -11,7 +14,7 @@
   margin: 0;
   height: 100%;
 }
-.logo {
+.spinner-logo {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -44,7 +47,7 @@
 }
 .two-div{
   transform: rotate(-20deg);
-  animation: spin 1s ease-out infinite;
+  animation: spin 1s ease-in-out infinite;
 
 }
 .three{
@@ -53,7 +56,7 @@
 }
 .three-div{
   transform: rotate(-65deg);
-  animation: spin 1.5s ease-in-out infinite;
+  animation: spin 1.5s ease-out infinite;
 }
 @keyframes spin {
   from {
