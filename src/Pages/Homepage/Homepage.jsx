@@ -31,6 +31,7 @@ export default class Homepage extends Component {
         utils.shuffelArray(this.typeText);
 
     }
+    
     isMobile=()=>
     {
         return window.innerWidth < 769;
@@ -44,12 +45,15 @@ export default class Homepage extends Component {
             <div className='home-page'>
                 <div className='home-bg-div'>
                     <LazyImage className='home-bg-img' src={utils.getImageSrc('backgrounds', this.backgroundImage   , 'jpg')}
-                        placeHolder={utils.getImageSrc('backgrounds', '0', 'jpg', 'small')} />
+                        placeHolder={utils.getImageSrc('backgrounds', '0', 'jpg', 'small')}
+                        onLoadCallBack={this.props.onLoadCallBack?this.props.onLoadCallBack:null}
+                         />
                 </div>
                 <Navbar key={0} />
                 <div className='home-content-wrapper'>
                 <div className='home-content'>
-                    <div className='heading' >Welcome to Sai Roopa Studios.</div>
+                    <div className='heading' data-aos='fade-up' 
+                     >Welcome to Sai Roopa Studios.</div>
                     <div className='type-text-div'>
                         <div className='type-text-heading'>We Offer :</div>
                         <div className='type-text'>
@@ -57,7 +61,7 @@ export default class Homepage extends Component {
                         </div>
                     </div>
                     <div className='home-content-2'>
-                        <p className='description'>Whether you’re having any occation, or you need a wedding photographer in Chittor, get in touch with us to start something beautiful!</p>
+                        <p className='description'>Whether you’re having any occasion, or you need a wedding photographer in Chittor, get in touch with us to start something beautiful!</p>
                        {this.isMobile() &&
                         <div className='phone-btn' html onClick={()=>{window.location.href=`tel:+91${phNo}`}}>
                             <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512"  xmlns="http://www.w3.org/2000/svg">

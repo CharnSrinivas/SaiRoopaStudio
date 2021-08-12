@@ -5,19 +5,21 @@
   
   left: 50%;
   top: 50%;
+  
   transform: translate(-50%, -50%);
   margin: 0px;
 }
 .container {
   position: relative;
-  width: 100%;
-  margin: 0;
-  height: 100%;
+  width: 50%;
+  margin: auto;
+  height: 50%;
 }
 .spinner-logo {
   position: absolute;
   left: 50%;
   top: 50%;
+
   transform: translate(-50%, -50%);
   animation: fade 2s ease-in-out infinite;
 }
@@ -30,8 +32,8 @@
 
   border-radius: 50%;
   border: 3.5px solid transparent;
-  border-top: 3.5px solid rgb(92, 92, 92);
-  border-left: 3.5px solid rgb(92, 92, 92);
+  border-top: 3.5px solid rgb(92, 92, 95);
+  border-left: 3.5px solid rgb(92, 92, 95);
 }
 .one {
   width: 200px;
@@ -78,4 +80,19 @@
   50% {
     opacity: 0.5;
   }
+}
+@media screen and (max-width:470px) {
+  .spinner-logo{
+    width:85px;
+    height:985x; 
+  }
+  .one {
+    width: calc(200px - 15%);
+    height: calc(200px - 15%);
+  }
+  .two {
+    width: calc(160px - 15%);
+    height: calc(160px - 15%);
+  }
+
 }

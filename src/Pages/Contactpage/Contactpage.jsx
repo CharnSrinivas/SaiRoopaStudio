@@ -4,7 +4,7 @@ import { addTriggerEventToOnWindowChange } from '../../Main';
 import Msgbox from '../../Components/Models/Msgbox/Msgbox';
 import styles from './Contactpage.module.css';
 import { validEmail, validName } from '../../utils/utils';
-
+import {phNo,address,email} from '../../Constants/consts'
 export default class Contactpage extends Component {
 
     constructor(props) {
@@ -73,8 +73,8 @@ export default class Contactpage extends Component {
                 let message = this.state.message === '' ? null : this.state.message;
                 let fromMail = process.env['REACT_APP_EMAIL'];
                 let appPassword = process.env['REACT_APP_EMAIL_APP_PASSWORD'];
-                // let mailApiUrl = process.env['REACT_APP_API_ROOT_MAIL_SEND_URL'];
-                let mailApiUrl = ' http://127.0.0.1:8000/srstudio/mail/send'
+                let mailApiUrl = process.env['REACT_APP_API_ROOT_MAIL_SEND_URL'];
+                // let mailApiUrl = ' http://127.0.0.1:8000/srstudio/mail/send'
                 let imgFile = this.imageInputRef.current.files[0];
                 let img_name = null;
                 let img_type = null;
@@ -93,7 +93,7 @@ export default class Contactpage extends Component {
                     img_name: img_name,
                 }
 
-                // ? -------- If imgae is selected  ---------
+                // ? -------- If image is selected  ---------
 
                 if (imgFile != null && imgFile !== undefined) {
                     data.img_name = imgFile.name
@@ -104,15 +104,16 @@ export default class Contactpage extends Component {
                             data.base64_img = reader.result.split(',')[1];
                             data.img_type = ((reader.result).split(';')[0]).split('/')[1];
                             fetch(mailApiUrl, { method: 'POST', body: JSON.stringify(data) })
-                                .catch(err => {
-                                    this.showMsgBox('danger');
-                                    this.submitBtnSpinnerRef.current.style.display = 'none';
-                                }).then((res) => {
+                                .then((res) => {
                                     if (res.status === 200) { this.showMsgBox('success'); }
                                     else if(res.status===500){this.showMsgBox('warning',"Invalid email address,try again!")}
                                      else { this.showMsgBox('danger'); }
                                     
                                     this.submitBtnSpinnerRef.current.style.display = 'none'
+                                })
+                                .catch(err => {
+                                    this.showMsgBox('danger');
+                                    this.submitBtnSpinnerRef.current.style.display = 'none';
                                 })
 
                         } catch (error) {
@@ -129,15 +130,16 @@ export default class Contactpage extends Component {
                         method: 'POST',
                         body: JSON.stringify(data)
                     })
-                        .catch(err => {
-                            this.showMsgBox('danger');
-                            this.submitBtnSpinnerRef.current.style.display = 'none'
-                        })
-                        .then(res => {
+                        
+                        .then((res) => {
 
                             if (res.status === 200) { this.showMsgBox('success'); }
                             else if(res.status===500){this.showMsgBox('warning',"Invalid email address,try again!")}
                              else { this.showMsgBox('danger'); }
+                            this.submitBtnSpinnerRef.current.style.display = 'none'
+                        })
+                        .catch((err) => {
+                            this.showMsgBox('danger');
                             this.submitBtnSpinnerRef.current.style.display = 'none'
                         })
                 }
@@ -163,15 +165,15 @@ export default class Contactpage extends Component {
                 <div className={styles['contacts']}>
                     <div className={`${styles['phone']} ${styles['contacts-item']}`}>
                         <img alt='phone' className={styles['contacts-item-image']} src={require('../../assets/svgs/icons/phone_outline.svg').default} />
-                        <p className={styles['contacts-item-text']}>+91 123456789</p>
+                        <p className={styles['contacts-item-text']}>{phNo}</p>
                     </div>
                     <div className={`${styles['mail']} ${styles['contacts-item']}`}>
                         <img alt='mail' className={styles['contacts-item-image']} src={require('../../assets/svgs/icons/mail_outline.svg').default} />
-                        <p className={styles['contacts-item-text']}>exaple@example.com</p>
+                        <p className={styles['contacts-item-text']}>{email}</p>
                     </div>
                     <div className={`${styles['location']} ${styles['contacts-item']}`}>
                         <img alt='location' className={styles['contacts-item-image']} src={require('../../assets/svgs/icons/location_outline.svg').default} />
-                        <p className={styles['contacts-item-text']}>102 Streen ,Thirupathi</p>
+                        <p className={styles['contacts-item-text']}>{address}</p>
                     </div>
                 </div>
                 <img className={styles['left-block-svg']} alt='contact_illustration' src={require('../../assets/svgs/contact_illustration.svg').default} ></img>
@@ -192,7 +194,7 @@ export default class Contactpage extends Component {
                         <div className={`${styles['name-section']} ${styles['card-section']}`}>
                             <p>Your name</p>
                             <div className={styles['card-input-item']}>
-                                <input ref={this.nameInputRef} id='name-input' onKeyUp={this.validName} type='name' placeholder='Name' />
+                                <input ref={this.nameInputRef} id='name-input' onKeyUp={this.validName} type={"name"} placeholder='Name' />
                                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles['person-outline-svg']} >
                                     <path d="M18 4.275C20.61 4.275 22.725 6.39 22.725 9C22.725 11.61 20.61 13.725 18 13.725C15.39 13.725 13.275 11.61 13.275 9C13.275 6.39 15.39 4.275 18 4.275ZM18 24.525C24.6825 24.525 31.725 27.81 31.725 29.25V31.725H4.275V29.25C4.275 27.81 11.3175 24.525 18 24.525ZM18 0C13.0275 0 9 4.0275 9 9C9 13.9725 13.0275 18 18 18C22.9725 18 27 13.9725 27 9C27 4.0275 22.9725 0 18 0ZM18 20.25C11.9925 20.25 0 23.265 0 29.25V36H36V29.25C36 23.265 24.0075 20.25 18 20.25Z" fill="#868686" />
                                 </svg>
@@ -202,20 +204,7 @@ export default class Contactpage extends Component {
                             </div>
 
                         </div>
-                        {/* <div className={`${styles['phone-section']} ${styles['card-section']}`}>
-                            <p>Mobile No</p>
-                            <div className={styles['card-input-item']}>
-                                <input ref={this.phoneInputRef} id='phone-input' type='name' placeholder='Phone no' />
-                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles['phone-outline-svg']} >
-                                    <path d="M50.5741 37.3318L39.6364 32.6442C39.1691 32.4451 38.6499 32.4031 38.1567 32.5246C37.6635 32.6462 37.2232 32.9246 36.902 33.318L32.0581 39.2361C24.4562 35.6519 18.3384 29.534 14.7541 21.9321L20.6722 17.0882C21.0664 16.7676 21.3454 16.3273 21.467 15.8339C21.5886 15.3405 21.5461 14.8209 21.346 14.3538L16.6585 3.41613C16.4388 2.91262 16.0504 2.50151 15.5601 2.25371C15.0699 2.0059 14.5085 1.93693 13.9729 2.05869L3.81644 4.40248C3.29999 4.52174 2.83922 4.81252 2.50932 5.22738C2.17942 5.64223 1.99988 6.15666 2 6.6867C2 31.736 22.3031 52 47.3133 52C47.8435 52.0003 48.3581 51.8209 48.7732 51.491C49.1883 51.1611 49.4792 50.7002 49.5985 50.1836L51.9423 40.0271C52.0632 39.4889 51.9928 38.9253 51.7431 38.4333C51.4934 37.9414 51.08 37.5518 50.5741 37.3318V37.3318Z" stroke="#868686" stroke-width="4" />
-                                </svg>
-
-                                <span className={styles['phone-underline-focus']} />
-                                <span className={styles['phone-underline']} />
-
-                            </div>
-
-                        </div> */}
+ 
 
                         <div className={`${styles['mail-section']} ${styles['card-section']}`}>
                             <p>E-Mail</p>
@@ -237,7 +226,7 @@ export default class Contactpage extends Component {
                         <div className={`${styles['message-section']} ${styles['card-section']}`}>
                             <p>Message</p>
                             <div>
-                                <textarea ref={this.messageTextInputRef} onKeyUp={(event) => { this.setState({ 'message': event.target.value }) }} placeholder='Type your message to us' spellCheck='false' />
+                                <textarea ref={this.messageTextInputRef} onKeyUp={(event) => { this.setState({ 'message': event.target.value }) }} placeholder='Type your message to us' spellCheck='true' />
                             </div>
 
                         </div>

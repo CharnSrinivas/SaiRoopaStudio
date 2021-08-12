@@ -40,15 +40,20 @@ export default class Main extends React.Component {
         })
     }
     componentDidMount() {
-        this.setState({ isLoaded: true })
+        this.setState({isLoaded:true})
+    }
+    componentDidUpdate(){
+        console.log("updated");
     }
     render() {
         return (
-                
+
             <Suspense fallback={<Spinner />} >
                 {this.state.isLoaded &&
                     <>
-                        <div id='00' ><Homepage backgroundImageName={'0'} /></div>
+                        <div id='00' ><Homepage backgroundImageName={'0'}
+
+                        /></div>
                         <div id='01' ><Servicespage /></div>
                         <div id='02' ><Aboutpage /></div>
                         <div id='03' ><Collectionspage /></div>

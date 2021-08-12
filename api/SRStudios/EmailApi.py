@@ -2,9 +2,7 @@ from email.message import EmailMessage
 import smtplib
 from flask import blueprints,request,jsonify
 import base64,threading
-from validate_email import validate_email
 from flask.wrappers import Response
-from werkzeug.wrappers.request import PlainRequest
 
 
 GreetingMsg = "Thank you for contacting us,We got your message we'll get back to you."

@@ -1,7 +1,6 @@
-from app import create_app
-app = create_app()
+from app import createapp
 
+app = createapp();
 @app.route('/')
-def index():
-    return '<h1>Hello nothig useful will available here 😁😁😅</h1>'
-
+def  index():
+    return "<h1 style=\"text-align:center\">Unauthorized permission</h1>"

@@ -77,9 +77,9 @@ export class TabContentPhotos extends Component {
 
         for (let i = 0; i < this.noOfImages; i++) {
             let name = i.toString();
-            this.placeHolderImagesSrc.push(utils.getImageSrc(this.imageFolderName, name, 'jpg', 'small'));
-            this.mediumImagesSrc.push(utils.getImageSrc(this.imageFolderName, name, 'jpg', 'medium'));
             this.originalImagesSrc.push(utils.getImageSrc(this.imageFolderName, name, 'jpg'))
+            this.mediumImagesSrc.push(utils.getImageSrc(this.imageFolderName, name, 'jpg', 'medium'));
+            this.placeHolderImagesSrc.push(utils.getImageSrc(this.imageFolderName, name, 'jpg', 'small'));
         }
 
     }
@@ -119,7 +119,7 @@ export class TabContentPhotos extends Component {
 
 export default class Collections extends Component {
 
-    renderPhotos = (className, id, imageFolderName, noOfImages, onClick) => {
+    renderPhotos = (className, id, imageFolderName, noOfImages) => {
 
         return (
 
@@ -139,7 +139,7 @@ export default class Collections extends Component {
                 <div className={styles['collections-heading']}>Collections</div>
                 <div className={styles['tab-view']}>
                     <Tabview
-                        tabHeadNamesArray={['Wedding', 'Candid', 'Editing', 'Event', 'Fashion']}
+                        tabHeadNamesArray={['Events & Albums','Wedding', 'Candid']}
                         activeTabHeadTextColor={colors.primary}
                         inactiveTabHeadTextColo={colors.black}
                         sliderColor={colors.primary}
@@ -148,12 +148,9 @@ export default class Collections extends Component {
                         tabBarWidth={'100%'}
                         tabBarMobileViewWidth={'150%'}
                         renderTabContentArray={[
-                            this.renderPhotos(styles['tab-view-item'], 'wedding-images', 'wedding', 5), // 'wedding-images' = id
-                            this.renderPhotos(styles['tab-view-item'], 'candid-images', 'candid', 6), // 'candid-images' =id
-                            this.renderPhotos(styles['tab-view-item'], 'editing', 'wedding', 5),
-                            this.renderPhotos(styles['tab-view-item'], 'event-images', 'candid', 6),
-                            this.renderPhotos(styles['tab-view-item'], 'fashion-images', 'wedding', 5)
-
+                            this.renderPhotos(styles['tab-view-item'], 'albums-images', 'event_album', 5),
+                            this.renderPhotos(styles['tab-view-item'], 'wedding-images', 'wedding', 3), // 'wedding-images' = id
+                            this.renderPhotos(styles['tab-view-item'], 'candid-images', 'candid', 2) // 'candid-images' =id
                         ]}
                         key={2}
 
