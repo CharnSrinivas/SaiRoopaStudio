@@ -1,0 +1,17 @@
+{
+  "short_name": "SR Studios",
+  "name": "SR Studios",
+  "start_url": ".index.html",
+  "display":"fullscreen",
+  "orientation":"portrait-primary",
+  "background_color": "#fff0e5",
+  "theme-color":"fff0e5",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    }
+  ]
+  
+}
